@@ -46,7 +46,7 @@ web应用程序编写完毕后，若想提供给外界访问：需要一个服�
 
 - *.htm, *.html,这些都是网页的后缀，如果服务器上一直存在这些东西，我们就可以直接进行读取。通过网络；
 
-![image-20200923122042192](D:\Typora-photos\javaweb\image-20200923122042192.png)
+![image-20200923122042192](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200923122042192.png)
 
 - 静态web存在的缺点
   - Web页面无法动态更新，所有用户看到都是同一个页面
@@ -61,7 +61,7 @@ web应用程序编写完毕后，若想提供给外界访问：需要一个服�
 
 页面会动态展示：“Web的页面展示的效果因人而异”；
 
-![image-20200923122629189](D:\Typora-photos\javaweb\image-20200923122629189.png)
+![image-20200923122629189](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200923122629189.png)
 
 
 
@@ -75,7 +75,7 @@ web应用程序编写完毕后，若想提供给外界访问：需要一个服�
 - Web页面可以动态更新，所有用户看到都不是同一个页面
 - 它可以与数据库交互（数据持久化：注册，商品信息......）
 
-![image-20200923123013645](D:\Typora-photos\javaweb\image-20200923123013645.png)
+![image-20200923123013645](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200923123013645.png)
 
 
 
@@ -132,7 +132,7 @@ C/S：客户端和服务器
 
 **Tomcat**
 
-![image-20200923124515180](D:\Typora-photos\javaweb\image-20200923124515180.png)
+![image-20200923124515180](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200923124515180.png)
 
 面向百度编程；
 
@@ -162,11 +162,11 @@ Tomcat 实际上运行JSP 页面和Servlet。目前Tomcat最新版本为9.0.37**
 
 tomcat官网：https://tomcat.apache.org/
 
-![image-20200923125911054](D:\Typora-photos\javaweb\image-20200923125911054.png)
+![image-20200923125911054](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200923125911054.png)
 
 
 
-![image-20200923130222862](D:\Typora-photos\javaweb\image-20200923130222862.png)
+![image-20200923130222862](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200923130222862.png)
 
 
 
@@ -176,13 +176,13 @@ tomcat官网：https://tomcat.apache.org/
 
 文件夹的作用：
 
-![image-20200923130920656](D:\Typora-photos\javaweb\image-20200923130920656.png)
+![image-20200923130920656](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200923130920656.png)
 
 
 
 **启动，关闭Tomcat**
 
-![image-20200923133032984](D:\Typora-photos\javaweb\image-20200923133032984.png)
+![image-20200923133032984](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200923133032984.png)
 
 访问测试：http://localhost:8080/
 
@@ -196,7 +196,7 @@ tomcat官网：https://tomcat.apache.org/
 
 ### 3.3、配置 
 
-![image-20200923134423899](D:\Typora-photos\javaweb\image-20200923134423899.png)
+![image-20200923134423899](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200923134423899.png)
 
 可以配置启动的端口
 
@@ -243,7 +243,7 @@ tomcat官网：https://tomcat.apache.org/
 
    2. 没有：去DNS服务器找，找到的话就返回，找不到就返回找不到；
 
-      ![image-20200923140506745](D:\Typora-photos\javaweb\image-20200923140506745.png)
+      ![image-20200923140506745](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200923140506745.png)
 
 3. 可以配置一下环境变量（可选性）
 
@@ -434,7 +434,7 @@ Maven会规定好你该如何去编写我们的Java代码，必须按照这个�
 
 官网：https://maven.apache.org/
 
-![image-20200923164253632](D:\Typora-photos\javaweb\image-20200923164253632.png)
+![image-20200923164253632](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200923164253632.png)
 
 下载完成后，解压即可；
 
@@ -448,7 +448,7 @@ Maven会规定好你该如何去编写我们的Java代码，必须按照这个�
 - MAVEN_HOME      maven的目录
 - 在系统的path中配置  %MAVEN_HOME%\bin
 
-![image-20200923171821600](D:\Typora-photos\javaweb\image-20200923171821600.png)
+![image-20200923171821600](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200923171821600.png)
 
 测试Maven是否安装成功，保证必须配置完毕！
 
@@ -492,17 +492,17 @@ Maven会规定好你该如何去编写我们的Java代码，必须按照这个�
 
 2. 创建一个MavenWeb0项目
 
-   ![image-20200923205420734](D:\Typora-photos\javaweb\image-20200923205420734.png)
+   ![image-20200923205420734](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200923205420734.png)
 
-   ![image-20200923205602584](D:\Typora-photos\javaweb\image-20200923205602584.png)
+   ![image-20200923205602584](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200923205602584.png)
 
-   ![image-20200923205934606](D:\Typora-photos\javaweb\image-20200923205934606.png)
+   ![image-20200923205934606](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200923205934606.png)
 
-   ![image-20200923210116047](D:\Typora-photos\javaweb\image-20200923210116047.png)
+   ![image-20200923210116047](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200923210116047.png)
 
 3. 等待项目初始化完毕
 
-   ![image-20200923210959779](D:\Typora-photos\javaweb\image-20200923210959779.png)
+   ![image-20200923210959779](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200923210959779.png)
 
 4. 观察maven仓库中多了什么东西？
 
@@ -510,7 +510,7 @@ Maven会规定好你该如何去编写我们的Java代码，必须按照这个�
 
    IDEA项目创建成功后，看一眼Maven的配置
 
-   ![image-20200923211757962](D:\Typora-photos\javaweb\image-20200923211757962.png)
+   ![image-20200923211757962](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200923211757962.png)
 
 6. 到这里，Maven在IDEA中的配置和使用就OK了！
 
@@ -518,61 +518,61 @@ Maven会规定好你该如何去编写我们的Java代码，必须按照这个�
 
 ### 5.7、创建一个普通的Maven项目
 
-![image-20200923213010292](D:\Typora-photos\javaweb\image-20200923213010292.png)
+![image-20200923213010292](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200923213010292.png)
 
-![image-20200923212925927](D:\Typora-photos\javaweb\image-20200923212925927.png)
+![image-20200923212925927](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200923212925927.png)
 
 这个只有在Web应用下才会有！
 
-![image-20200923213333427](D:\Typora-photos\javaweb\image-20200923213333427.png)
+![image-20200923213333427](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200923213333427.png)
 
 
 
 ### 5.8、标记文件夹功能
 
-![image-20200923213933802](D:\Typora-photos\javaweb\image-20200923213933802.png)
+![image-20200923213933802](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200923213933802.png)
 
-![image-20200923214139551](D:\Typora-photos\javaweb\image-20200923214139551.png)
+![image-20200923214139551](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200923214139551.png)
 
-![image-20200923214400401](D:\Typora-photos\javaweb\image-20200923214400401.png)
+![image-20200923214400401](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200923214400401.png)
 
 
 
 ### 5.9、在IDEA中配置Tomcat
 
-![image-20200923223848716](D:\Typora-photos\javaweb\image-20200923223848716.png)
+![image-20200923223848716](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200923223848716.png)
 
-![image-20200923224104713](D:\Typora-photos\javaweb\image-20200923224104713.png)
+![image-20200923224104713](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200923224104713.png)
 
-![image-20200923224309784](D:\Typora-photos\javaweb\image-20200923224309784.png)
+![image-20200923224309784](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200923224309784.png)
 
-![image-20200923224357554](D:\Typora-photos\javaweb\image-20200923224357554.png)
+![image-20200923224357554](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200923224357554.png)
 
 解决警告问题
 
 必须要配置的：**为什么会有这个问题：我们访问一个网站，需要指定一个文件夹名字；**
 
-![image-20200923224529344](D:\Typora-photos\javaweb\image-20200923224529344.png)
+![image-20200923224529344](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200923224529344.png)
 
-![image-20200923224756958](D:\Typora-photos\javaweb\image-20200923224756958.png)
+![image-20200923224756958](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200923224756958.png)
 
-![image-20200923224819548](D:\Typora-photos\javaweb\image-20200923224819548.png)
+![image-20200923224819548](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200923224819548.png)
 
-![image-20200923231653648](D:\Typora-photos\javaweb\image-20200923231653648.png)
+![image-20200923231653648](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200923231653648.png)
 
 
 
 由于本人使用的IDEA社区版，没有Tomcat Service的功能，所以使用插件来完成。
 
-![image-20200923225549040](D:\Typora-photos\javaweb\image-20200923225549040.png)
+![image-20200923225549040](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200923225549040.png)
 
 安装完成后，重启IDEA即可。
 
 开始配置Tomcat
 
-![image-20200923225642970](D:\Typora-photos\javaweb\image-20200923225642970.png)
+![image-20200923225642970](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200923225642970.png)
 
-![image-20200923230122018](D:\Typora-photos\javaweb\image-20200923230122018.png)
+![image-20200923230122018](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200923230122018.png)
 
 **注意：如果Context Path为空，当下次开打配置时，它会自动变为“/项目名”。如果想为空，且不想每次打开配置时会发生改变，只需要在Context Path中输入 / 即可。**
 
@@ -582,7 +582,7 @@ Maven会规定好你该如何去编写我们的Java代码，必须按照这个�
 
 pom.xml是Maven的核心配置文件
 
-![image-20200923232604326](D:\Typora-photos\javaweb\image-20200923232604326.png)
+![image-20200923232604326](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200923232604326.png)
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -664,7 +664,7 @@ pom.xml是Maven的核心配置文件
 </project>
 ```
 
-![image-20200923235242198](D:\Typora-photos\javaweb\image-20200923235242198.png)
+![image-20200923235242198](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200923235242198.png)
 
 
 
@@ -698,9 +698,9 @@ maven由于它的约定大于配置，我们之后可能遇到我们写的配置
 
 ### 5.11、IDEA操作
 
-![image-20200924000253452](D:\Typora-photos\javaweb\image-20200924000253452.png)
+![image-20200924000253452](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200924000253452.png)
 
-![image-20200924000546075](D:\Typora-photos\javaweb\image-20200924000546075.png)
+![image-20200924000546075](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200924000546075.png)
 
 ### 5.12解决遇到的问题
 
@@ -718,15 +718,15 @@ maven由于它的约定大于配置，我们之后可能遇到我们写的配置
 
    在IDEA中的全局默认配置中去配置
 
-   ![image-20200924001730347](D:\Typora-photos\javaweb\image-20200924001730347.png)
+   ![image-20200924001730347](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200924001730347.png)
 
-   ![image-20200924001904810](D:\Typora-photos\javaweb\image-20200924001904810.png)
+   ![image-20200924001904810](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200924001904810.png)
 
 4. Maven项目中Tomcat无法配置
 
 5. maven默认web项目中的web.xml版本问题
 
-   ![image-20200924004322607](D:\Typora-photos\javaweb\image-20200924004322607.png)
+   ![image-20200924004322607](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200924004322607.png)
 
    
 
@@ -749,13 +749,13 @@ maven由于它的约定大于配置，我们之后可能遇到我们写的配置
 
    地址：https://mvnrepository.com/
 
-   ![image-20200924005420817](D:\Typora-photos\javaweb\image-20200924005420817.png)
+   ![image-20200924005420817](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200924005420817.png)
 
-   ![image-20200924005541306](D:\Typora-photos\javaweb\image-20200924005541306.png)
+   ![image-20200924005541306](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200924005541306.png)
 
-   ![image-20200924005641611](D:\Typora-photos\javaweb\image-20200924005641611.png)
+   ![image-20200924005641611](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200924005641611.png)
 
-   ![image-20200924005716872](D:\Typora-photos\javaweb\image-20200924005716872.png)
+   ![image-20200924005716872](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200924005716872.png)
 
 
 
@@ -853,7 +853,7 @@ Servlet接口在Sun公司有两个默认的实现类：HttpServlet，GenericServ
 
 Servlet是由Web服务器调用，web服务器在收到浏览器请求之后，会：
 
-![image-20200924160525793](D:\Typora-photos\javaweb\image-20200924160525793.png)
+![image-20200924160525793](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200924160525793.png)
 
 
 
@@ -1080,7 +1080,7 @@ public class ServletDemo04 extends HttpServlet {
 }
 ```
 
-![image-20200924190409341](D:\Typora-photos\javaweb\image-20200924190409341.png)
+![image-20200924190409341](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200924190409341.png)
 
 
 
@@ -1319,7 +1319,7 @@ public class ImageServlet extends HttpServlet {
 
 #### 4、实现重定向
 
-![image-20200925180815879](D:\Typora-photos\javaweb\image-20200925180815879.png)
+![image-20200925180815879](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200925180815879.png)
 
 一个web资源（B）收到客户端（A）的请求后，他（B）会通知客（A）去访问另外一个web资源（C），这份过程叫做重定向
 
@@ -1369,7 +1369,7 @@ public class RedirectServlet extends HttpServlet {
 
 ==**注意：转发的getRequestDispatcher()不需要加虚拟路径（虚拟路径就是我们在tomcat中设置的contextPath），重定向sendRedirect()需要加虚拟路径**==
 
-![image-20200925200517050](D:\Typora-photos\javaweb\image-20200925200517050.png)
+![image-20200925200517050](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200925200517050.png)
 
 
 
@@ -1429,15 +1429,15 @@ public class LoginServlet extends HttpServlet {
 
 HttpServletRequest代表客户端的请求，用户通过Http协议访问服务器，HTTp请求中的所有信息会被封装到HttpServletRequest，通过这个HttpServletRequest的方法，获得客户端的所有信息
 
-![image-20200925192125728](D:\Typora-photos\javaweb\image-20200925192125728.png)
+![image-20200925192125728](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200925192125728.png)
 
-![image-20200925192150535](D:\Typora-photos\javaweb\image-20200925192150535.png)
+![image-20200925192150535](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200925192150535.png)
 
 
 
 #### 获取参数，请求转发
 
-![image-20200925192333813](D:\Typora-photos\javaweb\image-20200925192333813.png)
+![image-20200925192333813](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200925192333813.png)
 
 ```java
 public class LoginServlet extends HttpServlet {
@@ -1520,7 +1520,7 @@ public class LoginServlet extends HttpServlet {
 
 ### 7.3、Cookie
 
-![image-20200926144842527](D:\Typora-photos\javaweb\image-20200926144842527.png)
+![image-20200926144842527](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200926144842527.png)
 
 1. 从请求中拿到cookie信息
 2. 服务器响应给客户端cookie
@@ -1565,7 +1565,7 @@ URLEncoder.decode(cookie.getValue(),"UTF-8")
 
 ### 7.4、Session（重点）
 
-![image-20200926145248905](D:\Typora-photos\javaweb\image-20200926145248905.png)
+![image-20200926145248905](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200926145248905.png)
 
 什么是Session：
 
@@ -1573,7 +1573,7 @@ URLEncoder.decode(cookie.getValue(),"UTF-8")
 - 一个Session独占一格浏览器，只要浏览器没有关闭，这个Session就存在；
 - 用户登录之后，整个网站它都可以访问！-->把偶村用户的信息；保存购物车的信息.....
 
-![image-20200926135134281](D:\Typora-photos\javaweb\image-20200926135134281.png)
+![image-20200926135134281](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200926135134281.png)
 
 Session和Cookie的区别：
 
@@ -1704,7 +1704,7 @@ public class SessionDemo03 extends HttpServlet {
 
 
 
-![image-20200926145623065](D:\Typora-photos\javaweb\image-20200926145623065.png)
+![image-20200926145623065](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200926145623065.png)
 
 
 
@@ -1735,7 +1735,7 @@ Java Server pages：Java服务器端页面，也和Servlet一样，用于动态W
 
   IDEA中使用Tomcat的会在IDEA的tomcat中产生一个work目录
 
-  ![image-20200926155716958](D:\Typora-photos\javaweb\image-20200926155716958.png)
+  ![image-20200926155716958](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200926155716958.png)
 
   地址：
 
@@ -1745,7 +1745,7 @@ Java Server pages：Java服务器端页面，也和Servlet一样，用于动态W
 
   发现页面转变成了Java程序！
 
-  ![image-20200926160048219](D:\Typora-photos\javaweb\image-20200926160048219.png)
+  ![image-20200926160048219](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200926160048219.png)
 
 
 
@@ -1797,7 +1797,7 @@ public void _jspService(HttpServletRequest request, HttpServletResponse response
 
 4. 以上的这些个对象我们可以在JSP页面中直接使用！
 
-![image-20200926163756385](D:\Typora-photos\javaweb\image-20200926163756385.png)
+![image-20200926163756385](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200926163756385.png)
 
 
 
@@ -2005,7 +2005,7 @@ JSTL标签库的使用就是为了弥补HTML变迁的不足；他自定义许多
 
 **核心标签**（掌握部分）
 
-![image-20200926210158857](D:\Typora-photos\javaweb\image-20200926210158857.png)
+![image-20200926210158857](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200926210158857.png)
 
 **JSTL标签库使用步骤**
 
@@ -2136,7 +2136,7 @@ class A{
 
 ### 10.1、早些年
 
-![image-20200927115205271](D:\Typora-photos\javaweb\image-20200927115205271.png)
+![image-20200927115205271](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200927115205271.png)
 
 用户直接访问控制层，控制层就可以直接操作数据库
 
@@ -2156,7 +2156,7 @@ Mysql	Oracle	SqlServer....
 
 ### 10.2、MVC三层架构
 
-![image-20200927120002649](D:\Typora-photos\javaweb\image-20200927120002649.png)
+![image-20200927120002649](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200927120002649.png)
 
 
 
@@ -2191,7 +2191,7 @@ Filter：过滤器，用来过滤网站的数据；
 - 处理中文乱码
 - 登录验证...
 
-![image-20200927121033144](D:\Typora-photos\javaweb\image-20200927121033144.png)
+![image-20200927121033144](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200927121033144.png)
 
 Filter开发步骤：
 
@@ -2201,7 +2201,7 @@ Filter开发步骤：
 
    1. 导包不要错
 
-      ![image-20200927121228646](D:\Typora-photos\javaweb\image-20200927121228646.png)
+      ![image-20200927121228646](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200927121228646.png)
 
    2. 实现Filter接口，重写对应的方法即可
 
@@ -2404,7 +2404,7 @@ public class TestPanel {
 
 什么是JDBC：Java连接数据库！
 
-![image-20200927163648418](D:\Typora-photos\javaweb\image-20200927163648418.png)
+![image-20200927163648418](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200927163648418.png)
 
 需要jar包的支持：
 
@@ -2451,7 +2451,7 @@ VALUES(3,'王五','123456','ww@qq.com','2000-01-01');
 
 IDEA中连接数据库
 
-![image-20200927174424359](D:\Typora-photos\javaweb\image-20200927174424359.png)
+![image-20200927174424359](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200927174424359.png)
 
 
 
@@ -2583,11 +2583,11 @@ A（900）--100-->B（1100）
 
 @Test注解只有在方法上有效，只要加了这个注解的方法，就可以直接运行
 
-![image-20200927182245261](D:\Typora-photos\javaweb\image-20200927182245261.png)
+![image-20200927182245261](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200927182245261.png)
 
 失败的时候是红色：
 
-![image-20200927182310919](D:\Typora-photos\javaweb\image-20200927182310919.png)
+![image-20200927182310919](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/javaweb/image-20200927182310919.png)
 
 
 
