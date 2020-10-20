@@ -1,0 +1,416 @@
+算法概述
+1.十种常见排序算法可以分为两大类：
+比较类排序：通过比较来决定元素间的相对次序，由于其时间复杂度不能突破O(nlogn)，因此也称为非线性时间比较类排序。
+非比较类排序：不通过比较来决定元素间的相对次序，它可以突破基于比较排序的时间下界，以线性时间运行，因此也称为线性时间非比较类排序。 
+
+2.相关概念
+稳定：如果a原本在b前面，而a=b，排序之后a仍然在b的前面。
+不稳定：如果a原本在b的前面，而a=b，排序之后 a 可能会出现在 b 的后面。
+时间复杂度：对排序数据的总的操作次数。反映当n变化时，操作次数呈现什么规律。
+空间复杂度：是指算法在计算机
+
+一、冒泡排序
+思路：相邻的两个数进行比较，如果前面的数大于后面的数则交换位置，每执行一次就可以找到本次排序的最大值，他会在最后。所以每找出一个最大值，那么下次排序比较的次数即可减1。
+
+代码：Java
+public int[] bubbleSort(int[] nums) {
+	for (int i=nums.length-1; i>0; i--) {
+		for (int j=0; j<i; j++) {
+			if (nums[j] > nums[j+1]) {
+				int temp = nums[j];
+				nums[j] = nums[j+1];
+				nums[j+1] = temp;
+			}
+		}
+	}
+	return nums;
+}
+平均时间复杂度：O(n^2)
+最坏时间复杂度：O(n^2)
+最好时间复杂度：O(n)
+空间复杂度：O(1)
+稳定性：稳定
+
+二、选择排序
+思路：从数组中寻早最小值，将最小值放入到本次查询的数的首位。下一次查询时从上一个最小值的+1位开始。直到比较完所有的数。
+
+代码：Java
+public int[] selectionSort(int[] array) {
+	for(int i=0; i<array.length; i++) {
+		int minIndex = i;
+		for(int j=i; j<array.length ;j++) {
+				if(array[j]<array[minIndex]) {
+				minIndex = j;
+				}
+		}
+		int temp = array[i];
+		array[i] = array[minIndex];
+		array[minIndex] = temp;
+	}
+	return array;
+}
+平均时间复杂度：O(n^2)
+最坏时间复杂度：O(n^2)
+最好时间复杂度：O(n^2)
+空间复杂度：O(1)
+稳定性：不稳定
+
+三、插入排序
+从第二个开始比较，从后往前比较，如果该数字比前一个数小，则往前移动，直到它不小于它的前一个数或者已经到达头部。此时前面的n个数已经是排好序的数，那么再从n+1个数开始比较，直到所有的数比较结束。
+
+代码：Java
+public int[] insertionSort(int[] array) {
+	for(int i=1; i<array.length; i++) {
+		for(int j=i; j>0; j--) {
+			if(array[j]<array[j-1]) {
+				int temp = array[j-1];
+				array[j-1] = array[j];
+				array[j] = temp;
+			}else {
+				break;
+			}
+		}
+	}
+	return array;
+}
+平均时间复杂度：O(n^2)
+最坏时间复杂度：O(n^2)
+最好时间复杂度：O(n)
+空间复杂度：O(1)
+稳定性：稳定
+
+四、希尔排序（分组+插入排序=改良版的插入排序=希尔排序）
+首先第一层循环是给数组进行分组，第一次分组是数组长度/2，后面每次在组数上再/2。第二层加第三层循环是一个插入排序，j等于i是因为前面的0到i-1项是每组的第一个数，而我们插入排序是从第二个数开始比较。
+
+代码：Java
+public int[] shellSort(int[] nums) {
+	for (int i=nums.length/2; i>0; i/=2) {
+		for (int j=i; j<nums.length; j++) {
+			for (int k=j; k>0; k-=i) {
+				if (k-i>=0 && nums[k] < nums[k-i]) {
+					int temp = nums[k-i];
+					nums[k-i] = nums[k];
+					nums[k] = temp;
+				}
+				else {
+					break;
+				}
+			}
+		}
+	}
+	return nums;
+}
+平均时间复杂度：O(n^1.3)      	O(n log n)
+最坏时间复杂度：O(n^2)	O(n log^2 n)
+最好时间复杂度：O(n)	O(n log^2 n)
+空间复杂度：O(1)
+稳定性：不稳定
+这个时间复杂度网上有两种说法，我也不懂。
+
+五、归并排序
+
+代码：Java
+public int[] mergeSort(int[] nums) {
+	if (nums.length<2) {
+		return nums;
+	}
+	int[] left = Arrays.copyOfRange(nums, 0, nums.length/2);
+	int[] right = Arrays.copyOfRange(nums, nums.length/2, nums.length);
+	return merge(mergeSort(left), mergeSort(right));
+	}
+	
+public  int[] merge(int[] left, int[] right) {
+	int[] result = new int[left.length + right.length];
+	int leftIndex=0,rightIndex=0;
+	for (int i=0; i<result.length; i++) {
+		if (rightIndex>=right.length || (leftIndex<left.length && left[leftIndex] <= right[rightIndex]) ) {
+			result[i] = left[leftIndex];
+			leftIndex++;
+		}else {
+			result[i] = right[rightIndex];
+			rightIndex++;
+		}
+	}
+	return result;
+}
+
+代码运行示意图：
+例如：	2	5	3	1	4	
+（1）、先将数组分为左右两组left(2,5)，right(3,1,4)，然后先执行mergeSort(left)，再执行mergeSort(right)，最后再执行merge()。
+（2）、mergeSort(2,5)执行后又生成了left(2)和right(5)两个数组，又重复上述步骤先执行mergeSort(left)，再执行mergeSort(right)，最后再执行merge()。
+（3）、mergeSort(2)执行后，由于length小于2，所以返回结果[2]。
+（4）、同理mergeSort(5)执行后，返回结果[5]。执行完后就返回到（2）中的merge(mergeSort(left), mergeSort(right))，此时mergeSort(left)=2，mergeSort(right)=5，然后进入merge()方法中执行。
+（5）、开始执行merge(2,5)，执行完后，返回的结果是[2,5]，返回到（1）的mergeSort(left)。所以（1）中的mergeSort(left)=[2,5]
+（6）、开始执行（1）的mergeSort(right)，同理，经过运行后返回的结果是[1,3,4]。所以（1）中的mergeSortright=[1,3,4]。
+（7）、最后再执行（1）中的merge([2,5],[1,3,4])，得到的结果就是[1,2,3,4,5]
+
+平均时间复杂度：O(n log n)
+最坏时间复杂度：O(n log n)
+最好时间复杂度：O(n log n)
+空间复杂度：O(n)
+稳定性：稳定
+
+六、快速排序
+思路：利用int index = start + (int)(Math.random() * (end-start+1));生成一个下标，让该下标的数作为“基准”，把小于或等于“基准”的数放在前面；将大于“基准”的数放在后面。此时“基准”的位置就是它在数组中排序后所在的位置。然后再把左右两边的数看成两个数组，利用同样的方式找到其他的数在数组中排序后所在的位置。直到所有的数都找到自己的位置。
+
+代码：Java
+public void quickSort(int[] nums, int start, int end) {
+    	if (end-start+1<2) {
+    		return ;
+    	}
+    	int index = partition(nums, start, end);
+    	if (start<=index-1) {
+    		quickSort(nums, start, index-1);    		
+    	}
+    	if (index+1<=end) {
+    		quickSort(nums, index+1, end);
+    	}
+}
+    
+public int partition(int[] nums, int start, int end) {
+    	int index = start + (int)(Math.random() * (end-start+1));
+    	int smallIndex = start;
+    	swap(nums,index,end);
+    	for (int i=start; i<=end; i++) {
+    		if (nums[i]<=nums[end]) {
+    			if (i>smallIndex) {
+    				swap(nums,smallIndex,i);
+    			}
+    			smallIndex++;
+    		}
+    	}
+    	return smallIndex-1;
+}
+    
+public void swap(int[] nums, int i, int j) {
+    	int temp = nums[i];
+    	nums[i] = nums[j];
+    	nums[j] = temp;
+}
+平均时间复杂度：O(n log n)
+最坏时间复杂度：O(n^2)
+最好时间复杂度：O(n log n)
+空间复杂度：O(log n)
+稳定性：不稳定
+
+七、堆排序
+堆是具有以下性质的完全二叉树：每个结点的值都大于或等于其左右孩子结点的值，称为大顶堆；或者每个结点的值都小于或等于其左右孩子结点的值，称为小顶堆。
+
+我们用简单的公式来描述一下堆的定义就是：
+大顶堆：arr[i] >= arr[2i+1] && arr[i] >= arr[2i+2]  
+小顶堆：arr[i] <= arr[2i+1] && arr[i] <= arr[2i+2]  
+
+思路：将给的数组看成一个无序堆，然后从最后一个非叶子结点（通过length/2-1即可找到）开始从左至右，从下至上进行调整。如果父结点发生了改变，那么需要对改变的子节点进行重新调整（如代码中的buildMaxHeap(nums, maxIndex)）。直到根节点调整完毕后即可生成一个大顶堆。然后此时数组中的第一个就是最大值，然后跟最后一个值进行交换。此时前面的n-1项属于未排序，然后再对其进行堆排序，直到数组长度为0时，排序结束。
+
+代码：Java
+int length;
+	
+public void heapSort(int[] nums) {
+	length = nums.length;
+	while (length>0) {
+		int rootIndex = length/2-1;
+		while (rootIndex>=0) {
+			buildMaxHeap(nums,rootIndex);
+			rootIndex--;
+		}
+		swap(nums,0,length-1);
+		length--;
+	}
+		
+}
+//建立最大堆	
+public void buildMaxHeap(int[] nums, int rootIndex) {
+		int maxIndex = rootIndex;
+		boolean changeFlag = false;
+		if (rootIndex*2+1<length && nums[rootIndex*2+1]>nums[maxIndex]) {
+			maxIndex = rootIndex*2+1;
+			changeFlag = true;
+		}
+		if ((rootIndex+1)*2<length && nums[(rootIndex+1)*2]>nums[maxIndex]) {
+			maxIndex = (rootIndex+1)*2;
+			changeFlag = true;
+		}
+		if (changeFlag) {
+			swap(nums, rootIndex, maxIndex);
+			buildMaxHeap(nums, maxIndex);
+	}		
+}
+//交换位置	
+public void swap(int[] nums, int i, int j) {
+	int temp = nums[i];
+	nums[i] = nums[j];
+	nums[j] = temp;
+}
+平均时间复杂度：O(n log n)
+最坏时间复杂度：O(n log n)
+最好时间复杂度：O(n log n)
+空间复杂度：O(1)
+稳定性：不稳定
+
+堆排序参考网址：https://www.cnblogs.com/chengxiao/p/6129630.html
+
+八、计数排序
+思路：求出待排数组中的最大值和最小值。创建一个长度为max-min+1的数组用来存储待排数组各个元素的个数。遍历待排数组，每遍历一个值就让计数数组（countingArray）下标为 元素值-min 的值加1。最后再获取countingArray中存放的值。
+
+代码：Java
+public void countingSort(int[] nums) {
+	//获取数组的最大值和最小值
+	int min = nums[0];
+	int max = nums[0];
+	for (int num : nums) {
+		if (num < min) {
+			min = num;
+		}
+		if (num > max) {
+			max = num;
+		}
+	}
+	int length = max-min+1;
+	//创建一个计数的数组
+	int[] countArray = new int[length];
+	//基础数
+	int base = min;
+	//计算每个元素的个数
+	for (int num : nums) {
+		countArray[num-base]++;
+	}
+	//修改nums中的值
+	int numsIndex=0,countIndex = 0;
+	while (numsIndex<nums.length) {
+		if (countArray[countIndex]>0) {
+			nums[numsIndex] = countIndex+base;
+			numsIndex++;
+			countArray[countIndex]--;
+		}else {
+			countIndex++;
+		}
+	}
+}
+平均时间复杂度：O(n+k)
+最坏时间复杂度：O(n+k)
+最好时间复杂度：O(n+k)
+空间复杂度：O(k)
+稳定性：稳定
+
+九、桶排序
+思路：找出最大值和最小值，计算他们的差值，每个小桶的长度为待排序的数组的长度。通过（桶的个数=差值/桶的长度+1）可以计算出所需要桶的个数。遍历待排序数组，将每个值放入到相对应的桶中（计算桶的下标公式：(num-min)/桶的长度）。
+放入时对桶内的数进行排序。当待排序数组遍历完排序就结束。
+
+代码：Java
+public ArrayList<ArrayList<Integer>> bucketSort(int[] nums) {
+	//获取数组的最大值和最小值
+	int min = nums[0];
+	int max = nums[0];
+	for (int num : nums) {
+		if (num < min) {
+			min = num;
+		}
+		if (num > max) {
+			max = num;
+		}
+	}
+	
+	//生成桶
+	int bucketSize = nums.length;
+	int bucketTotal = max-min/bucketSize + 1;
+	ArrayList<ArrayList<Integer>> buckets = new ArrayList<ArrayList<Integer>>();
+	for (int i=0; i<bucketTotal; i++) {
+		buckets.add(new ArrayList<Integer>());
+	}
+	
+	//将待排序的数据放入桶中
+	for (int num :nums) {
+		ArrayList<Integer> bucket = buckets.get(num-min/bucketSize);
+		if (bucket.isEmpty()) {
+			bucket.add(num);
+		}else {
+			boolean addFlag = false; 
+			for (int i=0; i<bucket.size(); i++) {
+				if (num < bucket.get(i)) {
+					bucket.add(i);
+					addFlag = true;
+					break;
+				}
+			}
+			if (!addFlag) {
+				bucket.add(num);
+			}			
+		}
+	}	
+	return buckets;
+}
+平均时间复杂度：O(n+k)
+最坏时间复杂度：O(n+k)
+最好时间复杂度：O(n^2)
+空间复杂度：O(n+k)
+稳定性：稳定
+
+十、基数排序
+思路：找出数组中最大值，计算其位数。从个位数开始比较，放入对应的基数中，将所有的数都放进相应的基数中后在从0到9进行排序。得出一个新的看似有序的数组，然后再对其下一位进行排序，重复上述步骤，直到最大值的所有位数都比较完毕。
+
+代码：Java
+public void radixSort(int nums[]) {
+	//查找最大值的位数
+	int max = nums[0];
+	for (int num : nums) {
+		if (num > max) {
+			max = num;
+		}
+	}
+	int digit = 0;
+	while (max>0) {
+		max /= 10;
+		digit++;
+	}
+		
+	//对数组进行基数排序
+	ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+	for (int i=0; i<10; i++) {
+		result.add(new ArrayList<Integer>());
+	}
+	int i=1;
+	while (i<=digit) {
+		for (int num : nums) {
+			result.get((int)(num/Math.pow(10, i-1)%10)).add(num);
+		}
+		rebulidArrays(nums, result);
+		i++;
+	}
+}
+	
+//将排序后的数放入数组中
+public void rebulidArrays(int[] nums, ArrayList<ArrayList<Integer>> lists) {
+	int i = 0;
+	for (ArrayList<Integer> list : lists) {
+		for (Integer num : list) {
+			nums[i] = num;
+			i++;
+		}
+		list.clear();
+	}
+}
+平均时间复杂度：O(n*k)
+最坏时间复杂度：O(n*k)
+最好时间复杂度：O(n*k)
+空间复杂度：O(n+k)
+稳定性：稳定
+
+
+整体参考网址：https://blog.csdn.net/weixin_41190227/article/details/86600821
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

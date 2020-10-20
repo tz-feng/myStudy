@@ -1,0 +1,32 @@
+Set:注重独一无二的性质,该体系集合可以知道某物是否已存在于集合中，不会存储重复的元素，用于存储无序(存入和取出的顺序不一定相同)元素，值不能重复。
+
+一、HashSet
+1、HashSet实现的是Set接口。存储元素的顺序并不是按照存入时的顺序（和List显然不同） 是按照哈希值来存的所以取数据也是按照哈希值取得。HashSet中存放的值是唯一的，他只能存放对象。它的底层是由HashMap实现的，它的对象存放在key中，value值统一为PERSENT。线程不安全。
+
+2、HashSet如何检查重复？
+它是通过hashCode和equals两个方法进行判断。首先通过对象的hashCode方法进行比较，如果相等，再用equals方法进行比较。如果equals方法为true，那么说明该对象已存在数组中。如果hashCode方法相等，但equals方法为false，那么在数组的位置以链表的形式进行存储。
+
+3、关于HashSet的存储。
+由于HashSet的底层是由HashMap实现的，所以应该先去了解一下HashMap。
+
+二、TreeSet
+1、TreeSet 是一个有序的集合，它的作用是提供有序的Set集合。TreeSet是基于TreeMap实现的。TreeSet中的元素支持2种排序方式：自然排序 或者 根据创建TreeSet 时提供的 Comparator 进行排序。这取决于使用的构造方法。TreeSet是非同步的。 它的iterator 方法返回的迭代器是fail-fast的。TreeSet是一个有序且不重复的集合。
+
+2、由于TreeSet的底层是由TreeMap实现的，所以TreeSet的数据结构也是红黑树。
+
+3、两种排序规则：自然排序和定制排序
+3.1、自然排序
+TreeSet会调用集合元素的compareTo(Object obj)方法来比较元素之间的大小关系，然后将集合元素按升序排列，这种方式就是自然排序。
+
+当一个对象调用该方法与另一个对象进行比较时，如：obj1.compareTo(obj2)，如果该方法返回0，说明两者相等；如果返回时一个正数，说明obj1 > obj2；如果返回一个负数，表明 obj1< obj2。
+
+3.2、定制排序
+当元素自身不具备比较性，或者自身具备的比较性不是所需要的，那么此时可以让容器自身具备。需要定义一个类实现Comparator，重写compare方法，并将该接口的实现类作为参数传递给TreeMap集合构造方法。
+
+当Comparable比较方式和Comparator比较方式同时存在时，以Comparator的比较方式为主。在重写compareTo或者compare方法时，必须要明确比较的主要条件相等时要比较的次要条件。
+
+三、LinkedHashSet
+1、LinkedHashSet继承HashSet类。LinkedHashSet的底层使用LinkedHashMap存储元素。LinkedHashSet是有序的，它是按照插入的顺序排序的。
+
+2、LinkedHashSet为什么不支持访问顺序对元素排序？
+首先，LinkedHashSet所有的构造方法都是调用HashSet的同一个构造方法，他们的map都是一个利用LinkedHashMap<>(initialCapacity, loadFactor)进行实例化。而该构造方法中的accessOrder写死为false了。所以，LinkedHashSet是不支持按访问顺序对元素排序的，只能按插入顺序排序。

@@ -1,0 +1,195 @@
+key命令
+1.删除 del key [key2] 
+
+2.序列化 dump key
+
+3.检查是否存在 exists key
+
+4.设置多少秒过期 expire key seconds
+
+5.设置多少毫秒过期 pexpire key milliseconds
+
+6.移除过期时间 persist key
+
+7.返回还有多少秒过期(time to live) ttl key
+
+8.返回还有多少毫秒过期 pttl key
+
+9.修改名字，如果newkey存在则会把原来的value覆盖掉 rename key newkey 
+
+10.仅当newkey不存在时修改名字，避免覆盖 renamenx key newkey
+
+11.返回key的类型 type key
+
+12.匹配模式 
+*表示任意个任意字符，?表示1个任意字符
+
+String类型
+1.set key value
+2.get key 
+3.返回子串，下标从0开始，前闭后闭 getrange key start end 
+4.设置若干个key-value对 mset key1 value1 [key2 value2][key3 value3]
+5.获取若干个key的value mget key1 [key2] [key3]
+6.设置key过少秒过期并且设置value setex key seconds value
+7.只有在key不存在时设置key的值，避免覆盖，丢失数据 setnx key value
+8.strlen key 
+9.设置若干个全都不存在key的key-value msetnx key1 value1 [key2 value2]
+10.key的数字值+1 incr key
+   key的数字值-1 decr key
+11.key的数字值+increment  incrby key increment
+   key的数字值-decrement  decrby key decrement
+12.key的浮点值+increment  incrbyfloat key increment  浮点值没有减的
+13.
+
+
+
+
+hash命令
+1.将哈希表key中的field字段的值设为value
+hset key field value 
+hmset key field1 value1 [field2 value2]
+hsetnx 
+2.hget key field 
+  hmget key field1 field2
+3.hgetall key
+4.hincrby key field increment 
+5.hincrbyfloat key field incerment 
+6.hkeys key 获取哈希表中的字段
+7.hlen key 获取哈希表中的字段数量
+8.hdel key field1 [field2]
+9.hvals key 获取哈希表中的所有值
+10.hexists key field
+
+
+
+List列表命令
+1.左右插入 
+lpush key value1 [value2]
+rpush key value1 [value2]
+按顺序压进去，value1是第一个
+2.左右弹出
+lpop key
+rpop key
+3.列出数据集合，前闭后闭
+lrange key start end
+0 -1表示列出所有
+4.长度 llen key
+5.删除count个值为value的元素，从左开始
+lrem list count value
+6.返回指定下标值，下标从0算起
+lindex key index
+7.替换指定下标的值，必须存在元素蔡可以使用
+lset list index value
+8.保留列表某一段下标之间的元素，其他全部删除
+ltrim list start end 
+9.在第一个出现的指定值pivot 的 前/后插入值value，
+linsert list before|after pivot value
+
+
+无序不重复
+set集合命令
+
+sadd set member1 [member2]
+srem set member1 [member2] 删除集合中的元素
+smembers set   列出所有元素
+sismember set member 判断元素是否在集合中 
+scard set 元素个数 
+srandmember set [count] 随机获取集合中的若干个元素
+
+sdiff set1 [set2] [set3] 返回set1对于后续集合的差集
+sdiffstore destination set1 [set2] [set3] 将set1对于后续1集合的差集存储在destination中
+
+sunion set1 [set2] [set3] 并集
+sunionstore destination set1 [set2] [set3] 将若干个集合的并集
+
+smove source destination member 将一个元素member从source移动到1destination
+
+spop set 随机移除一个元素并返回该元素值
+
+
+
+
+
+
+
+
+
+zset 有序不重复集合
+
+zadd zset score1 member1 [scour2 member2]
+zcard zset 集合成员数
+zcount zset min max 分数区间的成员数
+zincrby zset increment member 为成员加分
+zscore zset member 获取成员分数
+
+zrange zset start end [withscores] 获取全部成员[+分数]
+zrevrange zset start end [withscores] 查询索引区间以分数由高到低排序
+
+zrange zset min max [withscores] 获取分数区间的成员[+分数]
+zrevrangebyscore zset max min [withscores] 查询分数区间以分数由高到低排序
+
+zrem zset member1 [member2] 删除指定成员
+zremrangebyscore zset min max 删除分数区间的成员
+
+
+zrevrank zset member 返回成员由高到低顺序的索引
+zrank zset member 返回由低到高顺序的索引
+
+
+
+
+
+
+七、基数统计HyperLogLog
+
+不同于集合，它可以插入很多元素，但是只保留元素的数量，不能返回元素本身。说白了就是计数，计数在插入时只会对元素+1，不会耗费空间来存储元素。
+
+
+1.pfadd key element1 [element2] [element3]
+添加元素
+
+2.pfcount key1 [key2]
+计算key的基数数量，多个key则返回它们合并后所有元素的计数
+
+
+3.pfmerge destkey key1 [key2]
+将若干个key合并后存储在destkey里，原来的key不会消失
+
+八、发布订阅
+推送的一方往频道发送消息，订阅频道的一方可以接收消息
+1.订阅若干个指定频道，订阅后就只能接收消息，通过【Ctrl+C】退出
+subscribe  channel [channel] [channel] 
+2.打开一个新的黑窗口来往指定频道推送消息
+publish channel message
+3.退订若干个指定频道
+unsubscribe channel [channel]
+4.订阅和退订所有给定模式的频道
+[un]subscribe pattern [pattern] 
+
+九、事务
+事务就是封装多条redis命令进入队列缓存，通过exex命令一次性执行。有这么三个阶段：开始事务、命令入队、执行事务。
+redis事务不是原子性的，在执行过程中，如果有命令执行失败，前面的命令不会会滚，后面的命令继续执行。
+1.multi  开始一个事务，后续压入要执行的redis命令进入缓存队列
+2.exec 执行缓存队列中的命令
+3.discard 取消事务
+4.watch key [key] [key] 
+监视key，这个只能在事务外面执行，例如监视name，即watch name
+开始一个事务，写入get name等命令，还未执行事务
+此时其他黑窗口对name进行修改，则整个事务终止，经过自己测试，这个监视只会生效一次。
+5.unwatch 取消所有key的监视
+例如先 watch name，一个事务开始后，执行unwatch没有意义，不论在压入get name之前还是之后，只要改了name，事务就作废。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

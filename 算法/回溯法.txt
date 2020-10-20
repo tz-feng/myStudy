@@ -1,0 +1,135 @@
+回溯法：顾名思义，回溯法就是回到上一步，即恢复原样。通常使用在排列组合中，因为排列组合我们可以看作是一棵树，每个非叶子结点会有0-n次选择，因此我们可以通过回溯法，将每一次的选择遍历一次，遍历完之后要回到上一个结点时需要将其恢复成原来的样子。然后再看看他是否有其他选择。知道所有情况都遍历完毕。
+
+思路：
+1.给出递归的出口，即当满足什么条件时，不需要向下进行遍历了，已经满足了。然后将得到的路径加入结果中。
+2.如果不满足条件，那么就遍历该结点可以选择的路径。将当前选择加入路径中。
+3.选择完后进入下一次进行选择。
+4.返回上一个结点时需要将本次选择弹出路径，使其恢复回上一层的样子。
+
+一、回溯算法
+例题：
+力扣：T46，全排列。
+https://leetcode-cn.com/problems/permutations/submissions/
+题目：给定一个 没有重复 数字的序列，返回其所有可能的全排列。
+
+示例：
+输入: 
+[1,2,3]
+输出:
+[
+  [1,2,3],
+  [1,3,2],
+  [2,1,3],
+  [2,3,1],
+  [3,1,2],
+  [3,2,1]
+]
+
+代码：
+class Solution {
+    public List<List<Integer>> permute(int[] nums) {
+    	
+    	List<List<Integer>> res = new ArrayList<>();
+    	int len = nums.length;
+    	if (len == 0) {
+    		return res;	//当数组长度为0时返回空。
+    	}
+    	
+    	Deque<Integer> path = new ArrayDeque<Integer>();	//路径
+    	boolean[] used = new boolean[len];			//哪些数已被访问过
+    	dfs (nums, len, 0, path, used, res);			//深度优先搜索（重点）
+    	return res;
+    	
+    }
+
+	/**
+     	* @param nums		每个位置可供选择的数组
+     	* @param len		数组的长度
+     	* @param depth		路径深度，用来判断使用结束。
+     	* @param path		记录遍历顺序。
+     	* @param used		记录哪些数已被使用
+     	* @param res		记录成功的结果。
+     	*/
+	private void dfs(int[] nums, int len, int depth, Deque<Integer> path, boolean[] used, List<List<Integer>> res) {
+		// TODO Auto-generated method stub
+		if (depth == len) {
+			res.add(new ArrayList<>(path));	//当满足条件时，将路径添加到结果中。
+			return ;
+		}
+		for (int i=0; i<len; i++) {
+			if (used[i]) {
+				continue;			//检查该数是否被使用过的数，用过则直接下一个数。
+			}
+			path.addLast(nums[i]);		//如果该数可以被选，则加入路径末尾。
+			used[i] = true;			//并且设置它已被访问。
+			dfs (nums, len, depth+1, path, used, res);	//再对下一层进行访问。
+			path.removeLast();			//返回上一层前，需要恢复回原来的样子，将本次的选择从路径中删除。
+			used[i] = false;			//返回上一层前，需要恢复回原来的样子，将本次的选择撤销。
+		}
+	}
+}
+
+二、回溯算法 + 剪枝
+剪枝：由于回溯算法是对一棵树进行的一种遍历算法，那么剪枝的意思就是，如果这条路径是走不通的，那么我们就不走它。即一旦我们发现该路径已经不可能满足我们的条件时，我们我们就没必要再做下面的选择了。
+
+例题：
+力扣：T77，组合
+https://leetcode-cn.com/problems/combinations/
+
+题目：给定两个整数 n 和 k，返回 1 ... n 中所有可能的 k 个数的组合。
+
+输入:
+ n = 4, k = 2
+输出:
+[
+  [2,4],
+  [3,4],
+  [2,3],
+  [1,2],
+  [1,3],
+  [1,4],
+]
+
+代码：
+public List<List<Integer>> combine(int n, int k) {
+    	List<List<Integer>> res = new ArrayList<>();
+    	if (n<k) {
+    		return res;		//如果k大于n，那么就不够数字来进行组合了
+    	}
+    	if (k == 0) {
+    		res.add(new ArrayList<>());
+    		return res;		//如果k等于0，那么就为空了。
+    	}
+    	int pre = 0;
+    	Deque<Integer> path = new ArrayDeque<Integer>();
+    	dfs(n, k, 0, pre, path, res);
+        return res;
+    }
+
+    /**
+     * 
+     * @param n		//每次选择能到达的最大值
+     * @param k		//需要多少个数进行组合
+     * @param depth	//当前树的深度，可以表示为当前已经对多少个树进行了组合，可要可不要，因为我们可以通过path.size()来获取当前depth。
+     * @param pre	//上次选择的数。因为是从小到大进行选择，所以在组合时后面的数必须比前面大，所以下一次的选择必须是在上一次的选择的基础上加一。（这属于剪枝的一个条件）
+     * @param path	//记录当前路径。
+     * @param res	//存储所有可行的路径。
+     * 在本题中我们可以剪哪些枝呢？
+     * 1.上面有提到的下一层的选择必须要比上一层大。
+     * 2.选择的值最大只能为：n-(k-depth)+1。
+     *   假设我们从四个数中取三个作为排列组合，第一个只能是1和2，因为如果选了3或4，那么后面剩余的两位中不可能将将他们填满，因为选了3，只剩下一个4；选了4，那么就没数可选了。
+     *   因此每次的选择只能是:pre+1<= i <=n-(k-depth)+1
+     */
+	private void dfs(int n, int k, int depth, int pre, Deque<Integer> path, List<List<Integer>> res) {
+		// TODO Auto-generated method stub
+		if (depth == k) {
+			res.add(new ArrayList<>(path));		//将可行的路径添加到结果中
+			return ;
+		}
+		
+		for (int i=pre+1; i<=n-(k-depth)+1 ;i++) {		//在条件上进行了剪枝
+			path.addLast(i);					//将当前选择加入路径
+			dfs(n, k, depth+1, i, path, res);	//检索下一层
+			path.removeLast();					//将当前选择移除出路径，恢复上一层的原样。
+		}
+	}

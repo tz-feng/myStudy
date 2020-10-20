@@ -1,0 +1,56 @@
+一、概念
+JAVA反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性；这种动态获取的信息以及动态调用对象的方法的功能称为java语言的反射机制。
+
+二、相关的API
+java.lang.Class：代表一个类
+java.lang.reflect.Method：代表类的方法
+java.lang.reflect.Field：代表累的成员变量
+java.lang.reflect.Constructor：代表类的构造器
+
+一个类在内存中只有一个Class对象。
+一个类被加载后，类的整个结构都会被封装在Class对象中。
+
+三、Class类
+对象照镜子后可以得到的信息：某个类的属性、方法和构造器、某个类到底实现了哪些接口。对于每个类而言，JRE 都为其保留一个不变的Class类型的对象。一个Class对象包含了特定某个结构的有关信息。
+
+Class 本身也是一个类
+Class 对象只能由系统建立对象
+一个加载的类在 JVM 中只有一个Class实例
+一个Class对象对应的是一个加载到JVM中的一个 .class文件
+每个类的实例都会记得自己是由哪个 Class 实例所生成
+通过Class可以完整地得到一个类中的所有被加载的结构
+Class类是Reflection的根源，针对任何你想动态加载、运行的类，唯有先获得相应的Class对象
+
+四、获取Class对象的五种方式
+
+        //方式一：通过对象获得
+        Class c1 = person.getClass();
+        System.out.println(c1.hashCode());
+
+        //方式二：forname获得
+        Class c2 = Class.forName("com.yjy.Student");
+        System.out.println(c2.hashCode());
+
+        //方式三：通过类名.class获得
+        Class c3 = Student.class;
+        System.out.println(c3.hashCode());
+
+        //方式四：基本内置类型的包装类都有一个Type属性
+        Class c4 = Integer.TYPE;
+        System.out.println(c4.hashCode());
+
+        //方法五：如果有子类可以通过子类获取
+        Class c5 = c1.getSuperclass();
+        System.out.println(c5.hashCode());
+
+哪些类型可以有Class对象
+class ：外部类，成员（成员内部类，静态内部类），局部内部类，匿名内部类
+interface：接口
+[]：数组
+enum：枚举
+annotation：注解@interface
+primitive type：基本数据类型
+void
+
+只要元素类型与维度一样，就是同一个class类
+

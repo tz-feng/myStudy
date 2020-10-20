@@ -1,0 +1,545 @@
+Redis6.0配置文件详解
+注：redis版本为：6.0.5
+
+配置文件原文地址：https://raw.githubusercontent.com/redis/redis/6.0/redis.conf
+
+如果要配置跟内存大小相关的参数是可以这样配置:
+1k => 1000 bytes
+1kb => 1024 bytes
+1m => 1000000 bytes
+1mb => 10241024 bytes
+1g => 1000000000 bytes
+1gb => 10241024*1024 bytes
+这些单位都是大小写不敏感的.
+
+包含
+包含一个或多个配置文件，通常include引入包含的配置，不能被"CONFIG REWRITE"重写。
+另外，由于Redis总是根据最后一个出现的相同的配置项的值作为配置值，所以如果我们不
+希望include的配置覆盖了当前文件的配置，那么请把include放在当前配置文件的前面。
+
+include /path/to/local.conf
+include /path/to/other.conf
+
+模块
+用于启动时加载模块。如果服务器无法加载模块它将中止。可以使用多个loadmodule指令。
+
+loadmodule /path/to/my_module.so
+loadmodule /path/to/other_module.so
+
+网络
+默认情况下，如果你没有显式的指定bind参数，那么Redis将只接受服务器本地回环的连接
+如果你想监听网络上其它IP的连接，也可以像下面这样配置一个或多个IP地址。
+
+bind 192.168.1.100 10.0.0.1
+bind 127.0.0.1 ::1
+
+警告 如果要接受网络上所有机器的连接，可以配置成bind 0.0.0.0， 这样Redis就会接受
+所有IPv4地址的连接请求。在实际应用中，这样是十分不安全的，不推荐这么做。
+bind 127.0.0.1
+
+这是一层安全保护，默认情况下是yes，外部网络无法访问当前redis，通常我们会在配置好
+bind的IP地址及访问密码（后面的requirepass参数）之后，会将它重新设置主no。这要外部
+网络就可以访问当前Redis了。
+protected-mode yes
+
+指定redis的监听端口，默认端口是6379
+port 6379
+
+此参数确定了TCP连接中已完成队列(完成三次握手之后)的长度， 当然此值必须不大于Linux
+系统定义的/proc/sys/net/core/somaxconn值，默认是511。而Linux的默认参数值是128，当系统并
+发量大并且客户端速度缓慢的时候，建议修改值大于511。
+tcp-backlog 511
+
+指定unix socket目录
+unixsocket /tmp/redis.sock
+
+指定unix socket file的权限
+unixsocketperm 700
+
+链接空闲了多少秒之后会被链接，也就是超时时间，0的话就表示永不超时
+timeout 0
+
+每隔多少秒向客户端发送ACKs来检测客户端是否还存活着
+tcp-keepalive 300
+
+套接字安全
+这部分都是SSL相关的配置，默认不开启SSL，读者有兴趣自己了解一下
+port 0
+tls-port 6379
+tls-cert-file redis.crt
+tls-key-file redis.key
+tls-dh-params-file redis.dh
+tls-ca-cert-file ca.crt
+tls-ca-cert-dir /etc/ssl/certs
+tls-auth-clients no
+tls-replication yes
+tls-cluster yes
+tls-protocols “TLSv1.2 TLSv1.3”
+tls-ciphers DEFAULT:!MEDIUM
+tls-ciphersuites TLS_CHACHA20_POLY1305_SHA256
+tls-prefer-server-ciphers yes
+
+通用
+默认情况下，Redis不会以守护进程的方式运行，如果你想以守护进程运行Redis，你可以设置为yes
+如果你以守护进程的方式运行Redis，那么Redis将会创建一个pid文件/var/run/redis.pid
+daemonize no
+
+可以通过upstart和systemd管理Redis守护进程，这个参数是和具体的操作系统相关的,它可以
+配置的值有：no、upstart、systemd或auto。
+supervised no
+
+以守护进程方式运行Redis时，pid文件配置，默认是：/var/run/redis.pid
+pidfile /var/run/redis_6379.pid
+
+日志记录等级，有4个可选值，debug（开发），verbose（默认值），notice（生产），warning（警告）
+loglevel notice
+
+日志文件的位置，当指定为空字符串时，为标准输出，如果redis已守护进程模式运行，那么日志将会
+输出到/dev/null，若指定了路径，日志将会输出到指定文件，默认值是""
+logfile “”
+
+是否把日志记录到系统日志，默认是no
+syslog-enabled no
+
+指定syslog里的日志标识，默认是redis
+syslog-ident redis
+
+指定syslog设备(facility)，必须是user或则local0到local7
+syslog-facility local0
+
+指定数据库数量，默认是16
+databases 16
+
+是否展示ASCII码logo，默认yes
+always-show-logo yes
+
+快照
+多少秒保存数据到磁盘，格式是：save 。意思是至少有changes条key数据被改变时，
+seconds秒保存到磁盘。
+
+默认配置：
+save 900 1
+save 300 10
+save 60 10000
+
+默认情况下，如果 redis 最后一次的后台保存失败，redis 将停止接受写操作，这样以一种强硬的方式让
+用户知道数据不能正确的持久化到磁盘， 否则就会没人注意到灾难的发生。 如果后台保存进程重新启动
+工作了，redis 也将自动的允许写操作。默认值是yes
+stop-writes-on-bgsave-error yes
+
+当dump rdb数据库的时候，要不要进行压缩，如果你想节约CPU资源，可以设置为no，但那样的话，rdb数据
+集将很大。默认是yes。
+rdbcompression yes
+
+从Redis5之后，一个CRC64校验和就被存在rdb文件的尾部，校验可以确认rdb文件的完整性，但是
+它会占用10%左右的保存或加载rdb文件的资源，如果你为了让性能最大化，你可以设置为no，默认是true。
+rdbchecksum yes
+
+指定rdb文件的名称，默认是dump.rdb
+dbfilename dump.rdb
+
+在没有持久性的情况下删除复制中使用的RDB文件，通常情况下保持默认即可。
+rdb-del-sync-files no
+
+本地数据库存放路径，默认值为./
+dir ./
+
+主从复制
+如果当前服务器为slave，那么这里配置的就是master的ip和端口，如：192.168.1.2 6379
+replicaof
+
+如果当前服务器为slave，那么这里配置的就是master的访问密码
+masterauth
+
+如果当前服务器为slave，那么这里配置的就是master的用户名
+masteruser
+
+当slave失去与master的连接，或正在拷贝中，如果为yes，slave会响应客户端的请求，
+数据可能不同步甚至没有数据，如果为no，slave会返回错误"SYNC with master in progress"
+replica-serve-stale-data yes
+
+如果当前服务器为slave，这里配置slave是否只读，默认为yes，如果为no的话，就是可读可写。
+replica-read-only yes
+
+新的从站和重连后不能继续备份的从站，需要做所谓的“完全备份”，即将一个RDB文件从主站传送到从站。
+这个传送有以下两种方式：
+硬盘备份：redis主站创建一个新的进程，用于把RDB文件写到硬盘上。过一会儿，其父进程递增地将文件传送给从站。
+无硬盘备份：redis主站创建一个新的进程，子进程直接把RDB文件写到从站的套接字，不需要用到硬盘。
+在硬盘备份的情况下，主站的子进程生成RDB文件。一旦生成，多个从站可以立即排成队列使用主站的RDB文件。
+在无硬盘备份的情况下，一次RDB传送开始，新的从站到达后，需要等待现在的传送结束，才能开启新的传送。
+如果使用无硬盘备份，主站会在开始传送之间等待一段时间（可配置，以秒为单位），希望等待多个子站到达后并行传送。
+在硬盘低速而网络高速（高带宽）情况下，无硬盘备份更好。
+repl-diskless-sync no
+
+无盘复制延时开始秒数，默认是5秒，意思是当PSYNC触发的时候，master延时多少秒开始向master传送数据流，
+以便等待更多的slave连接可以同时传送数据流，因为一旦PSYNC开始后，如果有新的slave连接master，只能等待
+下次PSYNC。可以配置为0取消等待，立即开始。
+repl-diskless-sync-delay 5
+
+是否使用无磁盘加载，有三项：
+disabled：不要使用无磁盘加载，先将rdb文件存储到磁盘
+on-empty-db：只有在完全安全的情况下才使用无磁盘加载
+swapdb：解析时在RAM中保留当前db内容的副本，直接从套接字获取数据。
+repl-diskless-load disabled
+
+这里指定slave定期向master进行心跳检测的周期，默认10秒
+repl-ping-replica-period 10
+
+对master进行心跳检测超时时间，默认60秒
+repl-timeout 60
+
+在slave和master同步后（发送psync/sync），后续的同步是否设置成TCP_NODELAY . 假如设置成yes，
+则redis会合并小的TCP包从而节省带宽，但会增加同步延迟（40ms），造成master与slave数据不一致
+假如设置成no，则redis master会立即发送同步数据，没有延迟。
+repl-disable-tcp-nodelay no
+
+设置主从复制backlog容量大小。这个 backlog 是一个用来在 slaves 被断开连接时存放slave数据的buffer，
+所以当一个 slave 想要重新连接，通常不希望全部重新同步，只是部分同步就够了，仅仅传递 slave 在断
+开连接时丢失的这部分数据。这个值越大，salve 可以断开连接的时间就越长。
+repl-backlog-size 1mb
+
+配置当master和slave失去联系多少秒之后，清空backlog释放空间。当配置成0时，表示永远不清空。
+repl-backlog-ttl 3600
+
+当 master 不能正常工作的时候，Redis Sentinel 会从 slaves 中选出一个新的 master，这个值越小，就越会被优先选中，
+但是如果是0，那是意味着这个slave不可能被选中。 默认优先级为100。
+replica-priority 100
+
+假如主redis发现有超过M个从redis的连接延时大于N秒，那么主redis就停止接受外来的写请求。这是
+因为从redis一般会每秒钟都向主redis发出PING，而主redis会记录每一个从redis最近一次发来PING的
+时间点，所以主redis能够了解每一个从redis的运行情况。上面这个例子表示，假如有大于等于3个从
+redis的连接延迟大于10秒，那么主redis就不再接受外部的写请求。上述两个配置中有一个被置为0，
+则这个特性将被关闭。默认情况下min-replicas-to-write为0，而min-replicas-max-lag为10。
+min-replicas-to-write 3
+min-replicas-max-lag 10
+
+常用于端口转发或NAT场景下，对Master暴露真实IP和端口信息。
+replica-announce-ip 5.5.5.5
+replica-announce-port 1234
+
+键的追踪
+在使用了客户端缓存（什么是客户端缓存：https://redis.io/topics/client-side-caching）的时候
+这里配置要追踪的key的数量，如果配置为0，则表示要追踪的key的数量不受限制
+tracking-table-max-keys 1000000
+
+安全
+ACL日志的最大长度，默认是128M。关于acl，详见：https://redis.io/topics/acl
+acllog-max-len 128
+
+ACL外部配置文件所在位置
+aclfile /etc/redis/users.acl
+
+当前redis服务的访问密码，默认是不需要密码
+requirepass foobared
+
+客户端
+客户端最大连接数配置默认是10000。
+maxclients 10000
+
+内存管理
+指定Redis最大内存限制。达到内存限制时，Redis将尝试删除已到期或即将到期的Key。
+maxmemory
+
+volatile-lru -> 对设置了过期时间的keys适用LRU淘汰策略
+allkeys-lru -> 对所有keys适用LRU淘汰策略
+volatile-lfu -> 对设置了过期时间的keys适用LFU淘汰策略
+allkeys-lfu -> 对所有keys适用LFU淘汰策略
+volatile-random -> 对设置了过期时间的keys适用随机淘汰策略
+allkeys-random -> 对所有keys适用随机淘汰策略
+volatile-ttl -> 淘汰离过期时间最近的keys
+noeviction -> 不淘汰任何key，仅对写入操作返回一个错误
+
+内存策略，默认是noeviction
+maxmemory-policy noeviction
+
+LRU,LFU,minimal TTL 算法都不是精准的算法，这里设置抽查的样本数量，默认是5个样本。
+maxmemory-samples 5
+
+从 Redis 5 开始，默认情况下，replica 节点会忽略 maxmemory 设置（除非在发生 failover 后，
+此节点被提升为 master 节点）。 这意味着只有 master 才会执行过期删除策略，并且 master 在
+删除键之后会对 replica 发送 DEL 命令。
+replica-ignore-maxmemory yes
+
+设置过期keys仍然驻留在内存中的比重，默认是为1，表示最多只能有10%的过期key驻留在内存中，
+该值设置的越小，那么在一个淘汰周期内，消耗的CPU资源也更多，因为需要实时删除更多的过期key。
+所以该值的配置是需要综合权衡的。
+active-expire-effort 1
+
+惰性释放
+针对redis内存使用达到maxmeory，并设置有淘汰策略时，在被动淘汰键时，是否采用lazy free机制。
+因为此场景开启lazy free, 可能使用淘汰键的内存释放不及时，导致redis内存超用，超过maxmemory的限制。
+lazyfree-lazy-eviction no
+
+针对设置有TTL的键，达到过期后，被redis清理删除时是否采用lazy free机制。此场景建议开启，
+因TTL本身是自适应调整的速度。
+lazyfree-lazy-expire no
+
+针对有些指令在处理已存在的键时，会带有一个隐式的DEL键的操作。如rename命令，当目标键已存在,redis会
+先删除目标键，如果这些目标键是一个big key,那就会引入阻塞删除的性能问题。 此参数设置就是解决这类问
+题，建议可开启。
+lazyfree-lazy-server-del no
+
+针对slave进行全量数据同步，slave在加载master的RDB文件前，会运行flushall来清理自己的数据场景，参数
+设置决定是否采用异常flush机制。如果内存变动不大，建议可开启。可减少全量同步耗时，从而减少主库因输
+出缓冲区爆涨引起的内存使用增长。
+replica-lazy-flush no
+
+对于替换用户代码DEL调用的情况，也可以这样做使用UNLINK调用是不容易的，要修改DEL的默认行为
+命令的行为完全像UNLINK。
+lazyfree-lazy-user-del no
+
+线程I/O
+IO线程组中IO线程的数量
+io-threads 4
+
+是否开启IO线程组，默认是不开启，想开启，可以设置为true，并指定上面io-threads的数值
+io-threads-do-reads no
+
+AOF模式
+是否启用aof持久化方式 。即是否在每次更新操作后进行日志记录，默认配置是no，即在
+采用异步方式把数据写入到磁盘，如果不开启，可能会在断电时导致部分数据丢失。
+appendonly no
+
+更新日志文件名，默认为appendonly.aof
+appendfilename “appendonly.aof”
+
+aof文件刷新的频率。有三种：
+1.no 依靠OS进行刷新，redis不主动刷新AOF，这样最快，但安全性就差。
+2.always 每提交一个修改命令都调用fsync刷新到AOF文件，非常非常慢，但也非常安全。
+3.everysec 每秒钟都调用fsync刷新到AOF文件，很快，但可能会丢失一秒以内的数据。
+appendfsync everysec
+
+指定是否在后台aof文件rewrite期间调用fsync，默认为no，表示要调用fsync（无论后台
+是否有子进程在刷盘）。Redis在后台写RDB文件或重写AOF文件期间会存在大量磁盘IO，
+此时，在某些linux系统中，调用fsync可能会阻塞。
+no-appendfsync-on-rewrite no
+
+aof文件增长比例，指当前aof文件比上次重写的增长比例大小。aof重写即在aof文件在一定大小之后，
+重新将整个内存写到aof文件当中，以反映最新的状态(相当于bgsave)。这样就避免了，aof文件过大
+而实际内存数据小的问题(频繁修改数据问题)。
+auto-aof-rewrite-percentage 100
+
+aof文件重写最小的文件大小，即最开始aof文件必须要达到这个文件时才触发，后面的每次重写就不
+会根据这个变量了(根据上一次重写完成之后的大小).此变量仅初始化启动redis有效.如果是redis恢
+复时，则lastSize等于初始aof文件大小。
+auto-aof-rewrite-min-size 64mb
+
+指redis在恢复时，会忽略最后一条可能存在问题的指令。默认值yes。即在aof写入时，可能存在指令
+写错的问题(突然断电，写了一半)，这种情况下，yes会log并继续，而no会直接恢复失败。
+aof-load-truncated yes
+
+在开启了这个功能之后，AOF重写产生的文件将同时包含RDB格式的内容和AOF格式的内容，其中RDB格式
+的内容用于记录已有的数据，而AOF格式的内存则用于记录最近发生了变化的数据，这样Redis就可以同
+时兼有RDB持久化和AOF持久化的优点（既能够快速地生成重写文件，也能够在出现问题时，快速地载入数据）。
+aof-use-rdb-preamble yes
+
+Lua脚本
+一个Lua脚本最长的执行时间，单位为毫秒，如果为0或负数表示无限执行时间，默认为5000
+lua-time-limit 5000
+
+Redis集群
+如果是yes，表示启用集群，否则以单例模式启动
+cluster-enabled yes
+
+这不是一个用户可编辑的配置文件，这个文件是Redis集群节点自动持久化每次配置的改变，
+为了在启动的时候重新读取它
+cluster-config-file nodes-6379.conf
+
+超时时间，集群节点不可用的最大时间。如果一个master节点不可到达超过了指定时间，则认为它失败了。
+注意，每一个在指定时间内不能到达大多数master节点的节点将停止接受查询请求。
+cluster-node-timeout 15000
+
+如果设置为0，则一个slave将总是尝试故障转移一个master。如果设置为一个正数，那么最大失去连接的
+时间是node timeout乘以这个factor。
+cluster-replica-validity-factor 10
+
+一个master和slave保持连接的最小数量（即：最少与多少个slave保持连接），也就是说至少与其它多少
+slave保持连接的slave才有资格成为master
+cluster-migration-barrier 1
+
+如果设置为yes，这也是默认值，如果key space没有达到百分之多少时停止接受写请求。如果设置为no，
+将仍然接受查询请求，即使它只是请求部分key
+cluster-require-full-coverage yes
+
+此选项设置为yes时，可防止从设备尝试对其进行故障转移master在主故障期间。 然而，仍然可以强制执行手动故障转移
+cluster-replica-no-failover no
+
+是否允许集群在宕机时读取
+cluster-allow-reads-when-down no
+
+docker集群/NAT支持
+宣布服务IP
+cluster-announce-ip 10.1.1.5
+
+宣布服务端口
+cluster-announce-port 6379
+
+宣布集群总线端口
+cluster-announce-bus-port 6380
+
+慢查询日志
+决定要对执行时间大于多少微秒(microsecond，1秒 = 1,000,000 微秒)的查询进行记录。
+slowlog-log-slower-than 10000
+
+它决定 slow log 最多能保存多少条日志， slow log 本身是一个 FIFO 队列，当队列大
+小超过 slowlog-max-len 时，最旧的一条日志将被删除，而最新的一条日志加入到 slow log ，以此类推。
+slowlog-max-len 128
+
+延迟监控
+能够采样不同的执行路径来知道redis阻塞在哪里。这使得调试各种延时问题变得简单，
+设置一个毫秒单位的延时阈值来开启延时监控。
+latency-monitor-threshold 0
+
+事件通知
+关于事件通知，详见：http://redis.io/topics/notifications
+
+键事件通知，可用参数：
+K 键空间通知，所有通知以 keyspace@ 为前缀.
+E 键事件通知，所有通知以 keyevent@ 为前缀
+g DEL 、 EXPIRE 、 RENAME 等类型无关的通用命令的通知
+$ 字符串命令的通知
+l 列表命令的通知
+s 集合命令的通知
+h 哈希命令的通知
+z 有序集合命令的通知
+x 过期事件：每当有过期键被删除时发送
+e 驱逐(evict)事件：每当有键因为 maxmemory 策略而被删除时发送
+A 参数 g$lshzxe 的别名
+
+notify-keyspace-events “”
+
+gopher服务
+开启gopher功能，默认是no（不开启），关于gopher，详见：https://github.com/antirez/gopher2redis
+gopher-enabled no
+
+高级配置
+ziplist最大条目数
+hash-max-ziplist-entries 512
+
+ziplist单个条目value的最大字节数
+hash-max-ziplist-value 64
+
+ziplist列表最大值，默认存在五项：
+-5:最大大小:64 Kb <——不建议用于正常工作负载
+-4:最大大小:32 Kb <——不推荐
+-3:最大大小:16 Kb <——可能不推荐
+-2:最大大小:8 Kb<——很好
+-1:最大大小:4 Kb <——好
+list-max-ziplist-size -2
+
+一个quicklist两端不被压缩的节点个数。0: 表示都不压缩。这是Redis的默认值，
+1: 表示quicklist两端各有1个节点不压缩，中间的节点压缩。3: 表示quicklist两
+端各有3个节点不压缩，中间的节点压缩。
+list-compress-depth 0
+
+当集合中的元素全是整数,且长度不超过set-max-intset-entries(默认为512个)时,
+redis会选用intset作为内部编码，大于512用set。
+set-max-intset-entries 512
+
+当有序集合的元素小于zset-max-ziplist-entries配置(默认是128个),同时每个元素
+的值都小于zset-max-ziplist-value(默认是64字节)时,Redis会用ziplist来作为有
+序集合的内部编码实现,ziplist可以有效的减少内存的使用。
+zset-max-ziplist-entries 128
+zset-max-ziplist-value 64
+
+value大小 小于等于hll-sparse-max-bytes使用稀疏数据结构（sparse），大于hll-sparse-max-bytes使用稠密的数据结构（dense）
+hll-sparse-max-bytes 3000
+
+Streams单个节点的字节数，以及切换到新节点之前可能包含的最大项目数。
+stream-node-max-bytes 4096
+stream-node-max-entries 100
+
+主动重新散列每100毫秒CPU时间使用1毫秒，以帮助重新散列主Redis散列表（将顶级键映射到值）
+activerehashing yes
+
+对客户端输出缓冲进行限制可以强迫那些不从服务器读取数据的客户端断开连接，用来强制关闭
+传输缓慢的客户端。
+client-output-buffer-limit normal 0 0 0
+
+对于slave client和MONITER client，如果client-output-buffer一旦超过256mb，又或者超过64mb
+持续60秒，那么服务器就会立即断开客户端连接
+client-output-buffer-limit replica 256mb 64mb 60
+
+对于pubsub client，如果client-output-buffer一旦超过32mb，又或者超过8mb持续60秒，那么服务
+器就会立即断开客户端连接
+client-output-buffer-limit pubsub 32mb 8mb 60
+
+客户端查询缓冲区累积新命令。 默认情况下，它被限制为固定数量，以避免协议失步（例如由于客
+户端中的错误）将导致查询缓冲区中的未绑定内存使用。 但是，如果您有非常特殊的需求，可以在
+此配置它，例如我们巨大执行请求
+client-query-buffer-limit 1gb
+
+在Redis协议中，批量请求（即表示单个字符串的元素）通常限制为512 MB。 但是，您可以在此更改此限制
+proto-max-bulk-len 512mb
+
+默认情况下，hz设置为10.提高值时，在Redis处于空闲状态下，将使用更多CPU。范围介于1到500之间，
+大多数用户应使用默认值10，除非仅在需要非常低延迟的环境中将此值提高到100
+hz 10
+
+启用动态HZ时，实际配置的HZ将用作基线，但是一旦连接了更多客户端，将根据实际需要使用配置的HZ值的倍数
+dynamic-hz yes
+
+当一个子进程重写AOF文件时，如果启用下面的选项，则文件每生成32M数据会被同步
+aof-rewrite-incremental-fsync yes
+
+当redis保存RDB文件时，如果启用了以下选项，则每生成32 MB数据将对文件进行fsync。 这对于以递增
+方式将文件提交到磁盘并避免大延迟峰值非常有用
+rdb-save-incremental-fsync yes
+
+±-------±-----------±-----------±-----------±-----------±-----------+
+| factor | 100 hits | 1000 hits | 100K hits | 1M hits | 10M hits |
+±-------±-----------±-----------±-----------±-----------±-----------+
+| 0 | 104 | 255 | 255 | 255 | 255 |
+±-------±-----------±-----------±-----------±-----------±-----------+
+| 1 | 18 | 49 | 255 | 255 | 255 |
+±-------±-----------±-----------±-----------±-----------±-----------+
+| 10 | 10 | 18 | 142 | 255 | 255 |
+±-------±-----------±-----------±-----------±-----------±-----------+
+| 100 | 8 | 11 | 49 | 143 | 255 |
+±-------±-----------±-----------±-----------±-----------±-----------+
+
+可以调整计数器counter的增长速度，lfu-log-factor越大，counter增长的越慢。
+lfu-log-factor 10
+
+是一个以分钟为单位的数值，可以调整counter的减少速度
+lfu-decay-time 1
+
+活跃的碎片整理
+是否启用碎片整理，默认是no
+activedefrag no
+
+最小的碎片空间浪费量
+active-defrag-ignore-bytes 100mb
+
+最小的碎片百分比阈值
+active-defrag-threshold-lower 10
+
+最大的碎片百分比阈值
+active-defrag-threshold-upper 100
+
+碎片整理周期CPU消耗最小百分比
+active-defrag-cycle-min 1
+
+碎片整理周期CPU消耗最大百分比
+active-defrag-cycle-max 25
+
+从set / hash / zset / list 扫描的最大字段数
+active-defrag-max-scan-fields 1000
+
+默认情况下，用于清除的Jemalloc后台线程是启用的。
+jemalloc-bg-thread yes
+
+设置redis服务器的IO线程组的CPU绑定：0，2，4，6
+server_cpulist 0-7:2
+
+设置BIO线程的CPU绑定为：1，3：
+bio_cpulist 1,3
+
+设置AOF子进程的CPU绑定为：8，9，10，11
+aof_rewrite_cpulist 8-11
+
+设置bgsave的CPU绑定为：1，10-11
+bgsave_cpulist 1,10-11
+
+
+来自于网址：https://blog.csdn.net/weixin_38869158/article/details/107554788

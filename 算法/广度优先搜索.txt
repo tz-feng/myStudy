@@ -1,0 +1,21 @@
+思想：从某一结点出发，先遍历其相邻的结点，然后将相邻的结点按顺序放入队列当中。再按照队列中的顺序对结点进行遍历，直到所有结点都遍历完毕。
+
+二叉树的从上到下的遍历：
+首先判断根节点是否为空，若为空，则返回null值，若不为空，则将根节点加入队列中。
+判断队列是否为空，如果队列不为空，再利用for循环记录当前队列中的长度。然后再对各个结点进行广度优先搜索。
+if（root!=null）{
+    queue.add(root);
+}
+while(!queue.isEmpty()){
+    for(int i=queue.size(); i>0; i--){
+         TreeNode temp = queue.poll();
+         list.add(temp.val);
+         if(temp.left!=null){
+              queue.add(temp.left);
+         }
+         if(temp.right!=null){
+              queue.add(temp.right);
+         }
+    }
+    result.add(list);
+}
