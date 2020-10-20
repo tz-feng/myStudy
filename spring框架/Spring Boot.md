@@ -78,15 +78,15 @@ starters自动依赖与版本控制
 
 -打开IDEA，在File中选择Setting，搜索Maven。
 
-![image-20200610120411512](/D:/Typora-photos/springboot/image-20200610120411512.png)
+![image-20200610120411512](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/springboot/image-20200610120411512.png)
 
 -将Maven home directory修改为自己的maven。
 
-![image-20200610120448104](/D:/Typora-photos/springboot/image-20200610120448104.png)
+![image-20200610120448104](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/springboot/image-20200610120448104.png)
 
 -将User settings file和Local repository的Override勾选，然后修改成自己包中的settings.xml和repository（该文件在下载的maven中是不存在的，可以自行创建，该文件是用来存放下载的依赖包）。
 
-![image-20200610120508968](/D:/Typora-photos/springboot/image-20200610120508968.png)
+![image-20200610120508968](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/springboot/image-20200610120508968.png)
 
 
 
@@ -299,7 +299,7 @@ public @interface EnableAutoConfiguration {
 
 ​				会给容器中导入非常多的自动配置类（xxxAutoConfiguration）；就是给容器中导入这个场景需要的所有组件，并配置好这些组件；
 
-![自动配置类](D:\Typora-photos\springboot\image-20200611000655829.png)
+![自动配置类](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/springboot/image-20200611000655829.png)
 
 有了自动配置类，免去了我们手动编写配置注入功能组件等工作
 
@@ -336,7 +336,7 @@ IDEA都支持使用Spring的项目创建向导快速创建一个Spring Boot项�
 
 如果IDEA中没有Spring Initializer或Spring Assistant，打开File——>Settings——>Plugins
 
-![Plugins设置](D:\Typora-photos\springboot/image-20200611124315812.png)
+![Plugins设置](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/springboot/image-20200611124315812.png)
 
 如果没有下载，可以在搜索栏输入spring Initializer或spring assistant进行下载，下载完之后重启IDEA即可。如果已经下载，则点击installed，找到spring Initializer或spring assistant进行勾选，然后重启即可。
 
@@ -346,23 +346,23 @@ Spring Boot创建过程
 
 File——>New Project——>Spring Assistant
 
-![Spring Assistant](D:\Typora-photos\springboot/image-20200611125643539.png)
+![Spring Assistant](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/springboot/image-20200611125643539.png)
 
 修改项目的基本信息
 
-![项目基本配置](D:\Typora-photos\springboot\image-20200611125928664.png)
+![项目基本配置](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/springboot/image-20200611125928664.png)
 
 选择项目所需要的依赖包
 
-![image-20200611130111515](D:\Typora-photos\springboot\image-20200611130111515.png)
+![image-20200611130111515](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/springboot/image-20200611130111515.png)
 
 设置项目名以及项目路径，完成后点击Finish即可自动生成Spring Boot项目
 
-![项目名与路径](D:\Typora-photos\springboot\image-20200611130253283.png)
+![项目名与路径](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/springboot/image-20200611130253283.png)
 
 **注意：**由于Spring Assistant自动帮我们生成了Spring Boot项目，所以pom.xml中的spring-boot-starter-parent版本也是按照Spring Assistant的规定帮我们生成的，所以我们需要将其版本修改为1.5.9;
 
-![修改spring-boot-starter-parent的版本](D:\Typora-photos\springboot\image-20200613020153596.png)
+![修改spring-boot-starter-parent的版本](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/springboot/image-20200613020153596.png)
 
 
 
@@ -573,11 +573,11 @@ person.dog.age=15
 
 打开File——>Settings——>搜索file encoding
 
-![file encoding](D:\Typora-photos\springboot\image-20200612123018001.png)
+![file encoding](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/springboot/image-20200612123018001.png)
 
 修改Properties的GBK编码改为UTF-8，并且选择运行时转成ascii，点击Apply，再点OK。
 
-![修改properties文件属性](D:\Typora-photos\springboot\image-20200612123308409.png)
+![修改properties文件属性](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/springboot/image-20200612123308409.png)
 
 
 
@@ -662,7 +662,7 @@ public class Person {
 
 结果：
 
-![@ConfigurationProperties支持松散绑定的结果](D:\Typora-photos\springboot\image-20200612172959708.png)
+![@ConfigurationProperties支持松散绑定的结果](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/springboot/image-20200612172959708.png)
 
 若使用@Value注解，则松散绑定失败；
 
@@ -682,7 +682,7 @@ public class Person {
 
 结果：
 
-![@Value不支持松散绑定的结果](D:\Typora-photos\springboot\image-20200612173933159.png)
+![@Value不支持松散绑定的结果](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/springboot/image-20200612173933159.png)
 
 
 
@@ -695,7 +695,7 @@ private Map<String, Object> maps;
 
 结果：
 
-![@Value不支持复杂类型封装](D:\Typora-photos\springboot\image-20200612181534565.png)
+![@Value不支持复杂类型封装](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/springboot/image-20200612181534565.png)
 
 
 
@@ -902,7 +902,7 @@ spring:
 
    例：点击Run/Debug Configurations——>Edit Configuration——>在Program arguments输入--spring.profiles.active=dev
 
-   ![配置传入命令行参数](D:\Typora-photos\springboot\image-20200613154921146.png)
+   ![配置传入命令行参数](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/springboot/image-20200613154921146.png)
 
 3. 虚拟参数
 
@@ -910,7 +910,7 @@ spring:
 
    例：点击Run/Debug Configurations——>Edit Configuration——>在VM options输入-Dspring.profiles.active=dev
 
-   ![配置虚拟参数](D:\Typora-photos\springboot\image-20200613155051577.png)
+   ![配置虚拟参数](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/springboot/image-20200613155051577.png)
 
 ​				
 
@@ -966,7 +966,7 @@ public class HelloController {
 
 结果：
 
-![互补配置的结果](D:\Typora-photos\springboot\image-20200613163130387.png)
+![互补配置的结果](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/springboot/image-20200613163130387.png)
 
 
 
@@ -986,11 +986,11 @@ server.port=8085
 
 在命令行中输入java -jar spring-boot-02-config-02-0.0.1-SNAPSHOT.jar --spring.config.location=D:/application.properties
 
-![命令行输入参数](D:\Typora-photos\springboot\image-20200613164419668.png)
+![命令行输入参数](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/springboot/image-20200613164419668.png)
 
 结果：
 
-![spring-config-location结果](D:\Typora-photos\springboot\image-20200613164728077.png)
+![spring-config-location结果](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/springboot/image-20200613164728077.png)
 
 提示：如果希望默认的项目中默认的位置也被搜索到，那么可以使用spring.config.additional-location。**用法spring.config.location一样，但是它会搜索默认的位置**，而spring.config.location不会。**spring.config.additional-location添加的位置的优先级会高于默认位置**。
 
@@ -1368,7 +1368,7 @@ public class HelloWorld {
 
 图示：
 
-![slf4j的使用原理](D:\Typora-photos\springboot\concrete-bindings.png)
+![slf4j的使用原理](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/springboot/concrete-bindings.png)
 
 每一个日志的实现框架都有自己的配置文件。使用slf4j之后，**配置文件还是做成日志实现框架自己本上的配置文件；**
 
@@ -1414,7 +1414,7 @@ SpringBoot使用他来做日志功能；
 
 底层依赖关系
 
-![spring-boot-starter-logging的依赖关系](D:\Typora-photos\springboot\image-20200614232408547.png)
+![spring-boot-starter-logging的依赖关系](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/springboot/image-20200614232408547.png)
 
 总结：
 
@@ -1432,7 +1432,7 @@ public abstract class LogFactory {
 
 
 
-![中间转换包](D:\Typora-photos\springboot\image-20200614233433458.png)
+![中间转换包](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/springboot/image-20200614233433458.png)
 
 
 
@@ -1746,7 +1746,7 @@ public static class FaviconConfiguration {
 
    https://www.webjars.org/
 
-   ![jar包结构](D:\Typora-photos\springboot\image-20200615123030319.png)
+   ![jar包结构](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/springboot/image-20200615123030319.png)
 
    localhost:8080/webjars/jquery/3.3.1/jquery.js
 
@@ -1795,7 +1795,7 @@ public static class FaviconConfiguration {
 
 JSP、Velocity、Freemarker、Thymeleaf
 
-![模板引擎结构图](D:\Typora-photos\springboot\template-engine.png)
+![模板引擎结构图](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/springboot/template-engine.png)
 
 SpringBoot推荐的Thymeleaf；
 
@@ -1993,7 +1993,7 @@ Special tokens:
 
 结果：
 
-![thymeleaf运行结果](D:\Typora-photos\springboot\image-20200615234349672.png)
+![thymeleaf运行结果](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/springboot/image-20200615234349672.png)
 
 
 
@@ -2269,7 +2269,7 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
 
 1. 编写国际化配置文件，抽取页面需要显示的国际化消息
 
-   ![image-20200616162946108](D:\Typora-photos\springboot\image-20200616162946108.png)
+   ![image-20200616162946108](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/springboot/image-20200616162946108.png)
 
    
 
@@ -2318,7 +2318,7 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
 
    **注意**：本人在学习的过程中使用的版本是1.5.9， 而教学视频中使用的是1.5.10。如果1.5.9使用1.5.10的方式，则会出现以下错误；
 
-   ![修改basename不正确出现的错误](D:\Typora-photos\springboot\image-20200616163831099.png)
+   ![修改basename不正确出现的错误](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/springboot/image-20200616163831099.png)
 
    
 
@@ -2802,23 +2802,23 @@ insert的公共片段在div标签中
 
 1. 浏览器，返回一个默认的错误页面
 
-   ![SpringBoot默认错误页面](D:\Typora-photos\springboot\image-20200619120728894.png)
+   ![SpringBoot默认错误页面](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/springboot/image-20200619120728894.png)
 
    
 
    浏览器发送请求的请求头：
 
-   ![浏览器的请求头](D:\Typora-photos\springboot\image-20200619133056338.png)
+   ![浏览器的请求头](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/springboot/image-20200619133056338.png)
 
    
 
 2. 如果是其他客户端，默认响应一个JSON数据
 
-   ![默认JSON数据](D:\Typora-photos\springboot\image-20200619122412526.png)
+   ![默认JSON数据](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/springboot/image-20200619122412526.png)
 
    客户端发送请求的请求头：
 
-   ![客户端的请求头](D:\Typora-photos\springboot\image-20200619133315437.png)
+   ![客户端的请求头](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/springboot/image-20200619133315437.png)
 
    
 
@@ -3040,7 +3040,7 @@ insert的公共片段在div标签中
 
    最终的效果：响应是自适应的，可以通过定制ErrorAttributes改变需要返回的内容，
 
-   ![自定义ErrorAttributes](D:\Typora-photos\springboot\image-20200619201245726.png)
+   ![自定义ErrorAttributes](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/springboot/image-20200619201245726.png)
 
    
 
@@ -3052,7 +3052,7 @@ insert的公共片段在div标签中
 
 SpringBoot默认使用Tomcat作为嵌入式的Servlet容器；
 
-![pom.xml结构图](D:\Typora-photos\springboot\image-20200619201800632.png)
+![pom.xml结构图](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/springboot/image-20200619201800632.png)
 
 
 
@@ -3165,7 +3165,7 @@ public ServletRegistrationBean dispatcherServletRegistration(
 
 ### 9.3、替换为其他嵌入式Servlet容器
 
-![image-20201016184352996](D:\Typora-photos\springboot\image-20201016184352996.png)
+![image-20201016184352996](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/springboot/image-20201016184352996.png)
 
 默认支持：
 
@@ -3295,13 +3295,13 @@ public class EmbeddedServletContainerAutoConfiguration {
    }
    ```
 
-   ![EmbeddedServletContainerFactory继承关系图](D:\Typora-photos\springboot\image-20200620211634789.png)
+   ![EmbeddedServletContainerFactory继承关系图](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/springboot/image-20200620211634789.png)
 
    **选中类名，按F4即可查看类的继承关系。**
 
 2. EmbeddedServletContainer：（嵌入式的Servlet容器）
 
-   ![EmbeddedServletContainer继承关系图](D:\Typora-photos\springboot\image-20200620211852290.png)
+   ![EmbeddedServletContainer继承关系图](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/springboot/image-20200620211852290.png)
 
 3. 以**TomcatEmbeddedServletContainerFactory**为例
 
@@ -3572,7 +3572,7 @@ servlet3.0（Spring注解版）：
 
 4. 每一个WebApplicationInitializer都调用自己的onStartup；
 
-   ![](D:\Typora-photos\springboot\搜狗截图20180302221835.png)
+   ![](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/springboot/搜狗截图20180302221835.png)
 
    相当于我们的SpringBootServletInitializer的类会被创建对象，并执行onStartup方法
 
@@ -3675,11 +3675,11 @@ Docker支持将软件编译成一个镜像；然后在镜像中各种软件做�
 
 运行中的这个镜像称为容器，容器启动是非常快速的。
 
-![](D:\Typora-photos\springboot\搜狗截图20180303145450.png)
+![](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/springboot/搜狗截图20180303145450.png)
 
 
 
-![](D:\Typora-photos\springboot\搜狗截图20180303145531.png)
+![](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/springboot/搜狗截图20180303145531.png)
 
 
 
@@ -3695,7 +3695,7 @@ docker镜像(Images)：软件打包好的镜像；放在docker仓库中；
 
 docker容器(Container)：镜像启动后的实例称为一个容器；容器是独立运行的一个或一组应用
 
-![](D:\Typora-photos\springboot\搜狗截图20180303165113.png)
+![](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/springboot/搜狗截图20180303165113.png)
 
 使用Docker的步骤：
 
@@ -3976,7 +3976,7 @@ schema-*.sql、data-*.sql
 
 1）、mysql的jar包与本地服务器mysql的版本不对应。
 
-![image-20200622153931455](D:\Typora-photos\springboot\image-20200622153931455.png)
+![image-20200622153931455](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/springboot/image-20200622153931455.png)
 
 解决方法：在pom.xml文件中修改mysql-connector-java的版本。
 

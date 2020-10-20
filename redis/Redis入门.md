@@ -28,7 +28,7 @@ redis为什么单线程还那么块？
 
 ## 2.五大数据类型
 
-![image-20200824210053809](D:\Typora-photos\redis\image-20200824210053809.png)
+![image-20200824210053809](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/redis/image-20200824210053809.png)
 
 中文翻译：
 
@@ -90,7 +90,7 @@ OK
 
 官方文档：
 
-![image-20200824212258056](D:\Typora-photos\redis\image-20200824212258056.png)
+![image-20200824212258056](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/redis/image-20200824212258056.png)
 
 
 
@@ -277,7 +277,7 @@ String类似的使用场景：value除了是字符串还可以是数字
 
 基本的数据类型，列表
 
-![image-20200824224208568](D:\Typora-photos\redis\image-20200824224208568.png)
+![image-20200824224208568](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/redis/image-20200824224208568.png)
 
 在redis里面，我们可以把list玩成 栈、队列、阻塞队列！
 
@@ -924,7 +924,7 @@ Redis 的 Geo 在Redis3.2 版本就推出了！这个功能可以推算地理位
 
 只有六个命令
 
-![image-20200825173038413](D:\Typora-photos\redis\image-20200825173038413.png)
+![image-20200825173038413](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/redis/image-20200825173038413.png)
 
 
 
@@ -1409,9 +1409,9 @@ QUEUED
 
      （1）注释掉 bind：127.0.0.1 和 关闭保护模式，然后输入 :wq 保存。
 
-     ![image-20200827132004668](D:\Typora-photos\redis\image-20200827132004668.png)
+     ![image-20200827132004668](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/redis/image-20200827132004668.png)
 
-     ![image-20200827131928943](D:\Typora-photos\redis\image-20200827131928943.png)
+     ![image-20200827131928943](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/redis/image-20200827131928943.png)
 
      （2）重启redis-server
 
@@ -1423,9 +1423,9 @@ QUEUED
 
      ​		进入防火墙的配置文件 vi /etc/sysconfig/iptables，添加相对应的端口-A INPUT -m state --state NEW -m tcp -p tcp --dport 端口号 -j ACCEPT，然后 :wq 保存，最后输入 service iptables restart 重启防火墙即可。
 
-     ![image-20200827133326405](D:\Typora-photos\redis\image-20200827133326405.png)
+     ![image-20200827133326405](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/redis/image-20200827133326405.png)
 
-![image-20200827133414127](D:\Typora-photos\redis\image-20200827133414127.png)
+![image-20200827133414127](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/redis/image-20200827133414127.png)
 
 ​			
 
@@ -1433,7 +1433,7 @@ QUEUED
 
 ​				直接输入 service iptables stop 关闭防火墙即可。
 
-​				![image-20200827133557289](D:\Typora-photos\redis\image-20200827133557289.png)
+​				![image-20200827133557289](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/redis/image-20200827133557289.png)
 
 
 
@@ -1474,7 +1474,7 @@ QUEUED
 
   输出：
 
-  ![image-20200827140739125](D:\Typora-photos\redis\image-20200827140739125.png)
+  ![image-20200827140739125](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/redis/image-20200827140739125.png)
 
   
 
@@ -1523,7 +1523,7 @@ public static void main(String[] args) {
 
 输出：
 
-![image-20200827142636233](D:\Typora-photos\redis\image-20200827142636233.png)
+![image-20200827142636233](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/redis/image-20200827142636233.png)
 
 
 
@@ -1564,7 +1564,7 @@ public static void main(String[] args) {
 
 输出：
 
-![image-20200827143051958](D:\Typora-photos\redis\image-20200827143051958.png)
+![image-20200827143051958](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/redis/image-20200827143051958.png)
 
 
 
@@ -1666,15 +1666,15 @@ class Redis02SpringbootApplicationTests {
 
 
 
-![image-20200827200911716](D:\Typora-photos\redis\image-20200827200911716.png)
+![image-20200827200911716](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/redis/image-20200827200911716.png)
 
 
 
 由于默认的序列化方式是JDK序列化，而我们使用的是json，所以会出现转义的情况。
 
-![image-20200827201349700](D:\Typora-photos\redis\image-20200827201349700.png)
+![image-20200827201349700](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/redis/image-20200827201349700.png)
 
-![image-20200827201411910](D:\Typora-photos\redis\image-20200827201411910.png)
+![image-20200827201411910](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/redis/image-20200827201411910.png)
 
 
 
@@ -1695,7 +1695,7 @@ class Redis02SpringbootApplicationTests {
 
 结果：
 
-![image-20200827211002444](D:\Typora-photos\redis\image-20200827211002444.png)
+![image-20200827211002444](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/redis/image-20200827211002444.png)
 
 
 
@@ -1746,7 +1746,7 @@ public class RedisConfig {
 
 > 单位
 
-![image-20200828220611407](D:\Typora-photos\redis\image-20200828220611407.png)
+![image-20200828220611407](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/redis/image-20200828220611407.png)
 
 1.配置文件 unit单位 对大小写不敏感！
 
@@ -1754,7 +1754,7 @@ public class RedisConfig {
 
 > 包含
 
-![image-20200828220817635](D:\Typora-photos\redis\image-20200828220817635.png)
+![image-20200828220817635](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/redis/image-20200828220817635.png)
 
 包含其他的配置文件，就像 java 里的 import。
 
@@ -1825,7 +1825,7 @@ dir ./	# rdb 文件保存的目录，默认是当前目录下！
 
 > REPLICATION 复制，主从复制会使用到
 
-![image-20200831185112903](D:\Typora-photos\redis\image-20200831185112903.png)
+![image-20200831185112903](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/redis/image-20200831185112903.png)
 
 
 
@@ -1905,7 +1905,7 @@ Redis 是内存数据库，如果不将内存中的数据库状态保存到磁�
 
 在主从复制中，rdb就是备用的！ 从机上面！
 
-![image-20200829120149121](D:\Typora-photos\redis\image-20200829120149121.png)
+![image-20200829120149121](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/redis/image-20200829120149121.png)
 
 在指定的时间间隔内将内存中的数据集快照写入磁盘，也就是行话的Snapshot快照，他恢复时是将快照文件直接读到内存里。
 
@@ -1927,7 +1927,7 @@ Redis会单独创建（fork）一个子进程来进行持久化，会先将数�
 
 ==备份就自动生成一个 dump.rdb==
 
-![image-20200829123107309](D:\Typora-photos\redis\image-20200829123107309.png)
+![image-20200829123107309](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/redis/image-20200829123107309.png)
 
 > 如何恢复rdb文件！
 
@@ -1961,7 +1961,7 @@ Redis会单独创建（fork）一个子进程来进行持久化，会先将数�
 
 将我们的所有命令都记录下来，history，恢复的时候就把这个文件全部再执行一遍！
 
-![image-20200829132731357](D:\Typora-photos\redis\image-20200829132731357.png)
+![image-20200829132731357](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/redis/image-20200829132731357.png)
 
 以日志的形式来记录每个写操作，将Redis执行过的所有指令记录下来（读操作不记录），只许追加文件但不可以改写文件，redis启动之初会读取文件重新构建数据，换而言之，redis重启的化就根据日志文件的内容将写指令从前到后执行一次以完成数据的恢复工作
 
@@ -1971,7 +1971,7 @@ Redis会单独创建（fork）一个子进程来进行持久化，会先将数�
 
 > append
 
-![image-20200829133405412](D:\Typora-photos\redis\image-20200829133405412.png)
+![image-20200829133405412](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/redis/image-20200829133405412.png)
 
 默认是不开启的，我们需要手动进行配置！我们只需要将 appendonly 改为yes就开启 aof！
 
@@ -1981,11 +1981,11 @@ Redis会单独创建（fork）一个子进程来进行持久化，会先将数�
 
 redis 给我们提供了一个工具 `redis-check-aof`
 
-![image-20200829135103256](D:\Typora-photos\redis\image-20200829135103256.png)
+![image-20200829135103256](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/redis/image-20200829135103256.png)
 
 如果文件正常，重启就可以直接恢复了，但是可以发现k5不见了。
 
-![image-20200829135240562](D:\Typora-photos\redis\image-20200829135240562.png)
+![image-20200829135240562](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/redis/image-20200829135240562.png)
 
 
 
@@ -1993,7 +1993,7 @@ redis 给我们提供了一个工具 `redis-check-aof`
 
 aof 默认就是文件的无线追加，文件会越来越大！
 
-![image-20200829140433726](D:\Typora-photos\redis\image-20200829140433726.png)
+![image-20200829140433726](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/redis/image-20200829140433726.png)
 
 如果 aof 文件大于64m，太大了！ fork一个新的进程来将我们的文件进行重写！
 
@@ -2058,17 +2058,17 @@ Redis 客户端可以订阅任意数量的频道。
 
 第一个：消息发送者，第二个：频道，第三个：消息订阅者！
 
-![image-20200831172709980](D:\Typora-photos\redis\image-20200831172709980.png)
+![image-20200831172709980](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/redis/image-20200831172709980.png)
 
 
 
 下图展示了频道channel1，以及订阅这个频道的三个客户端——client2、client5和client1 之间的关系：
 
-![image-20200831172742399](D:\Typora-photos\redis\image-20200831172742399.png)
+![image-20200831172742399](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/redis/image-20200831172742399.png)
 
 当有新消息通过 PUBLISH 命令发送给频道channel1 时，这个消息就会被发送给订阅它的三个客户端：
 
-![image-20200831172758625](D:\Typora-photos\redis\image-20200831172758625.png)
+![image-20200831172758625](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/redis/image-20200831172758625.png)
 
 
 
@@ -2076,7 +2076,7 @@ Redis 客户端可以订阅任意数量的频道。
 
 这些命令被广泛用于构建即时通信应用，比如网络聊天室(chatroom)和实时广播、实时提醒等。
 
-![image-20200831172819387](D:\Typora-photos\redis\image-20200831172819387.png)
+![image-20200831172819387](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/redis/image-20200831172819387.png)
 
 
 
@@ -2123,7 +2123,7 @@ Redis 通过 PUBLISH、SUBSCRIBE 和 PSUBSCRIBE 等命令实现发布和订阅�
 
 图示：
 
-![image-20200831175304169](D:\Typora-photos\redis\image-20200831175304169.png)
+![image-20200831175304169](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/redis/image-20200831175304169.png)
 
 通过 PUBLISH 命令像订阅者发送消息，redis-server 会使用给定的频道作为键，在它所维护的 channel 字典中查找记录了订阅这个频道的所有客户端的链表，遍历这个链表，将消息发布给所有订阅者。
 
@@ -2179,7 +2179,7 @@ Pub/Sub 从字面上理解就是发布（Publish）与订阅（Subscribe），�
 
 对于这种场景，我们可以使如下这种架构：
 
-![image-20200831181905091](D:\Typora-photos\redis\image-20200831181905091.png)
+![image-20200831181905091](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/redis/image-20200831181905091.png)
 
 主从复制，读写分离！80%的情况下都是在进行读操作！减缓服务器的压力！架构中经常使用！一主二从！
 
@@ -2218,7 +2218,7 @@ repl_backlog_histlen:0
 
 修改完毕后，启动3个redis服务器，可以通过进程信息查看！
 
-![image-20200831183730765](D:\Typora-photos\redis\image-20200831183730765.png)
+![image-20200831183730765](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/redis/image-20200831183730765.png)
 
 
 
@@ -2271,7 +2271,7 @@ repl_backlog_histlen:238
 
 如果两个都配置完了，就会有两个从机
 
-![image-20200831184635293](D:\Typora-photos\redis\image-20200831184635293.png)
+![image-20200831184635293](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/redis/image-20200831184635293.png)
 
 真实的主从配置应该在配置文件中配置，这样的话是永久的，这里使用的命令知识暂时的！
 
@@ -2283,11 +2283,11 @@ repl_backlog_histlen:238
 
 主机写：
 
-![image-20200831185552891](D:\Typora-photos\redis\image-20200831185552891.png)
+![image-20200831185552891](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/redis/image-20200831185552891.png)
 
 从机只能读取内容！
 
-![image-20200831185625333](D:\Typora-photos\redis\image-20200831185625333.png)
+![image-20200831185625333](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/redis/image-20200831185625333.png)
 
 
 
@@ -2315,7 +2315,7 @@ Master 接到命令，启动后台的存盘进程们同事手机所有接收到�
 
 上一个M链接下一个S！
 
-![image-20200831194022779](D:\Typora-photos\redis\image-20200831194022779.png)
+![image-20200831194022779](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/redis/image-20200831194022779.png)
 
 这时候也可以完成主从复制！
 
@@ -2337,7 +2337,7 @@ Master 接到命令，启动后台的存盘进程们同事手机所有接收到�
 
 哨兵模式是一种特殊的模式，首先Redis提供了哨兵的命令，哨兵是一个独立的进程，作为进程，他会独立运行。其原理是**哨兵通过发送命令，等待Redis服务器响应，从而监控运行的多个Redis实例**。
 
-![image-20200831201557658](D:\Typora-photos\redis\image-20200831201557658.png)
+![image-20200831201557658](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/redis/image-20200831201557658.png)
 
 这里的哨兵有两个作用
 
@@ -2349,7 +2349,7 @@ Master 接到命令，启动后台的存盘进程们同事手机所有接收到�
 
 然而一个哨兵进程对Redis服务器进行监控，可能会出现问题，为此，我们可以使用多个哨兵进行监控。各个哨兵之间还会进行监控，这样就形成了多哨兵模式。
 
-![image-20200831202008831](D:\Typora-photos\redis\image-20200831202008831.png)
+![image-20200831202008831](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/redis/image-20200831202008831.png)
 
 假设主服务器宕机，哨兵1先检测到这个结果，系统并不会马上进行failover（故障转移）过程，仅仅是哨兵1主观任务服务器不可以，这个现象称为**主观下线**。dang后面的哨兵也检测到主服务器不可用，并且达到一定的数量值，那么哨兵之间就会进行一次投票，投票的结果有一个哨兵发起，进行failover操作。切换成功后，就会通过发布订阅模式，将各个哨兵把自己监控的从服务器实现切换逐渐，这个过程称为**客观下线**。
 
@@ -2405,11 +2405,11 @@ sentinel monitor myredis 127.0.0.1 6379 1
 
 如果Master节点断开了，这个时候就会从从机中随机选择一个服务器做主机！（这里面有一个投票算法！）
 
-![image-20200831204752864](D:\Typora-photos\redis\image-20200831204752864.png)
+![image-20200831204752864](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/redis/image-20200831204752864.png)
 
 哨兵日志！
 
-![image-20200831205038531](D:\Typora-photos\redis\image-20200831205038531.png)
+![image-20200831205038531](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/redis/image-20200831205038531.png)
 
 如果主机此时回来了，只能归并到新的主机下，当做从机，这就是哨兵模式的规则！
 

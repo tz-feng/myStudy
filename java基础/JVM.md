@@ -2,7 +2,7 @@
 
 ## 对象的存储布局
 
-![image-20200904135730014](D:\Typora-photos\JVM\image-20200904135730014.png)
+![image-20200904135730014](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/JVM/image-20200904135730014.png)
 
 markword：存放关于锁的信息和GC标记信息（8个字节）。
 
@@ -39,13 +39,13 @@ public static void main(String[] args) {
 
 结果：
 
-![image-20200904141455003](D:\Typora-photos\JVM\image-20200904141455003.png)
+![image-20200904141455003](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/JVM/image-20200904141455003.png)
 
 
 
 ## 查看JVM默认自带的参数
 
-![image-20200904141819886](D:\Typora-photos\JVM\image-20200904141819886.png)
+![image-20200904141819886](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/JVM/image-20200904141819886.png)
 
 InitialHeapSize：初始堆大小。
 
@@ -83,7 +83,7 @@ UseCompressedOops：对Oop进行压缩（Oop：普通对象指针，即成员变
 
 通过JOL来查看一下：
 
-![image-20200904144027286](D:\Typora-photos\JVM\image-20200904144027286.png)
+![image-20200904144027286](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/JVM/image-20200904144027286.png)
 
 
 
@@ -91,7 +91,7 @@ UseCompressedOops：对Oop进行压缩（Oop：普通对象指针，即成员变
 
 ## markword结构图
 
-![image-20200904145311525](D:\Typora-photos\JVM\image-20200904145311525.png)
+![image-20200904145311525](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/JVM/image-20200904145311525.png)
 
 分代年龄：记录了经过多少次GC回收之后仍然被留下来。
 
@@ -124,7 +124,7 @@ public static void main(String[] args) {
 
 结果
 
-![image-20200904161204029](D:\Typora-photos\JVM\image-20200904161204029.png)
+![image-20200904161204029](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/JVM/image-20200904161204029.png)
 
 
 
@@ -132,7 +132,7 @@ public static void main(String[] args) {
 
    锁 = 001
 
-   ![image-20200904161426866](D:\Typora-photos\JVM\image-20200904161426866.png)
+   ![image-20200904161426866](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/JVM/image-20200904161426866.png)
 
    **打印出来的结果对应的64位如下：**
 
@@ -147,10 +147,10 @@ public static void main(String[] args) {
 
    001 + hashCode
 
-   ![image-20200904162239908](D:\Typora-photos\JVM\image-20200904162239908.png)
+   ![image-20200904162239908](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/JVM/image-20200904162239908.png)
 
 3. 偏向锁
 
    00
 
-   ![image-20200904162447251](D:\Typora-photos\JVM\image-20200904162447251.png)
+   ![image-20200904162447251](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/JVM/image-20200904162447251.png)

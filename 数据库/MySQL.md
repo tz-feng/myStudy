@@ -749,7 +749,7 @@ WHERE `borndate` IS NULL
 
 > JOIN对比
 
-![image-20200913160555194](D:\Typora-photos\mysql\image-20200913160555194.png)
+![image-20200913160555194](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/mysql/image-20200913160555194.png)
 
 
 
@@ -1397,11 +1397,11 @@ SELECT * FROM `app_user` WHERE `name`='用户9999'; -- 0 sec
 
 加索引前：
 
-![image-20200914170600856](D:\Typora-photos\mysql\image-20200914170600856.png)
+![image-20200914170600856](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/mysql/image-20200914170600856.png)
 
 加索引后：
 
-![image-20200914170630447](D:\Typora-photos\mysql\image-20200914170630447.png)
+![image-20200914170630447](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/mysql/image-20200914170630447.png)
 
 
 
@@ -1434,7 +1434,7 @@ Btree：InnoDB 默认的数据结构~
 
 > SQL yog 可视化管理
 
-![image-20200914171911190](D:\Typora-photos\mysql\image-20200914171911190.png)
+![image-20200914171911190](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/mysql/image-20200914171911190.png)
 
 
 
@@ -1501,7 +1501,7 @@ MySQL 数据库备份的方式：
 
   - 在想要导出的表或数据库，右键，选择备份和导出
 
-  ![image-20200914200215571](D:\Typora-photos\mysql\image-20200914200215571.png)
+  ![image-20200914200215571](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/mysql/image-20200914200215571.png)
 
 - 使用命令行导出 mysqldump 命令行使用
 
@@ -1599,11 +1599,11 @@ mysql -u用户名 -p密码 库数据名 <  备份文件路径
 
 举例说明：
 
-![image-20200914211156961](D:\Typora-photos\mysql\image-20200914211156961.png)
+![image-20200914211156961](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/mysql/image-20200914211156961.png)
 
 在上面的表中，“家庭信息”和“学校信息”列均不满足原子性的要求，故不满足第一范式，调整如下：
 
-![image-20200914211207892](D:\Typora-photos\mysql\image-20200914211207892.png)
+![image-20200914211207892](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/mysql/image-20200914211207892.png)
 
 可见，调整后的每一列都是不可再分的，因此满足第一范式（1NF）；
 
@@ -1617,7 +1617,7 @@ mysql -u用户名 -p密码 库数据名 <  备份文件路径
 
 举例说明：
 
-![image-20200914211732743](D:\Typora-photos\mysql\image-20200914211732743.png)
+![image-20200914211732743](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/mysql/image-20200914211732743.png)
 
 在上图所示的情况中，同一个订单中可能包含不同的产品，因此主键必须是“订单号”和“产品号”联合组成，
 
@@ -1625,7 +1625,7 @@ mysql -u用户名 -p密码 库数据名 <  备份文件路径
 
 这样就不满足第二范式的要求，调整如下，需分成两个表：
 
- ![image-20200914211749588](D:\Typora-photos\mysql\image-20200914211749588.png)![image-20200914211810693](D:\Typora-photos\mysql\image-20200914211810693.png)
+ ![image-20200914211749588](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/mysql/image-20200914211749588.png)![image-20200914211810693](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/mysql/image-20200914211810693.png)
 
 
 
@@ -1637,13 +1637,13 @@ mysql -u用户名 -p密码 库数据名 <  备份文件路径
 
 举例说明：
 
-![image-20200914212543036](D:\Typora-photos\mysql\image-20200914212543036.png)
+![image-20200914212543036](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/mysql/image-20200914212543036.png)
 
 上表中，所有属性都完全依赖于学号，所以满足第二范式，但是“班主任性别”和“班主任年龄”直接依赖的是“班主任姓名”，
 
 而不是主键“学号”，所以需做如下调整：
 
-![image-20200914212603258](D:\Typora-photos\mysql\image-20200914212603258.png) ![image-20200914212631474](D:\Typora-photos\mysql\image-20200914212631474.png)
+![image-20200914212603258](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/mysql/image-20200914212603258.png) ![image-20200914212631474](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/mysql/image-20200914212631474.png)
 
 这样以来，就满足了第三范式的要求。
 
@@ -1668,7 +1668,7 @@ mysql -u用户名 -p密码 库数据名 <  备份文件路径
 
 驱动：声卡，显卡，数据库。
 
-![image-20200914220134309](D:\Typora-photos\mysql\image-20200914220134309.png)
+![image-20200914220134309](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/mysql/image-20200914220134309.png)
 
 我们的程序会通过 数据库 驱动，和数据库打交道！
 
@@ -1682,7 +1682,7 @@ SUN公司为了简化 开发人员的（对数据库的统一）操作，提供�
 
 对于开发人员来说，我们只需要掌握JDBC 接口的操作即可！
 
-![image-20200914220525994](D:\Typora-photos\mysql\image-20200914220525994.png)
+![image-20200914220525994](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/mysql/image-20200914220525994.png)
 
 java.sql
 
@@ -1721,7 +1721,7 @@ VALUES(1,'zhangsan','123456','zs@sina.com','1980-12-04'),
 
 2、导入数据库驱动
 
-![image-20200915094356274](D:\Typora-photos\mysql\image-20200915094356274.png)
+![image-20200915094356274](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/mysql/image-20200915094356274.png)
 
 3、编写测试代码
 
@@ -2513,4 +2513,4 @@ Druid
 
 Apache
 
-![image-20200915223558328](D:\Typora-photos\mysql\image-20200915223558328.png)
+![image-20200915223558328](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/mysql/image-20200915223558328.png)

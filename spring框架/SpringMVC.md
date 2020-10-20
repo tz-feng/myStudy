@@ -27,7 +27,7 @@
 
 - Model1中，主要分为两层，视图层和模型层。
 
-  ![image-20201006112030355](D:\Typora-photos\SpringMVC\image-20201006112030355.png)
+  ![image-20201006112030355](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/SpringMVC/image-20201006112030355.png)
 
 优点：架构简单，比较适合小型项目的开发
 
@@ -39,7 +39,7 @@
 
 Model2把一个项目分成三部分，包括**视图、控制、模型。**
 
-![image-20201006112411640](D:\Typora-photos\SpringMVC\image-20201006112411640.png)
+![image-20201006112411640](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/SpringMVC/image-20201006112411640.png)
 
 
 
@@ -215,13 +215,13 @@ SpringMVC的原理如下图所示：
 
 客户端发送的请求会被前端控制器拦截，前端控制器对请求进行解析后找到相对应的控制器。控制器获取前端传来的参数调用相对应的业务逻辑。通过模型将数据返回给控制器，控制器再将ModelAndView返回给前端控制器。然后前端控制器将数据交给视图进行渲染，然后将渲染后的页面返回给用户。
 
-![image-20201006120413546](D:\Typora-photos\SpringMVC\image-20201006120413546.png)
+![image-20201006120413546](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/SpringMVC/image-20201006120413546.png)
 
 
 
 ### 2.3、SpringMVC执行原理
 
-![image-20201006122140702](D:\Typora-photos\SpringMVC\image-20201006122140702.png)
+![image-20201006122140702](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/SpringMVC/image-20201006122140702.png)
 
 图为SpringMVC的一个较完整的流程图，实线表示SpringMVC框架提供的技术，不需要开发者实现，虚线表示需要开发者实现。
 
@@ -720,7 +720,7 @@ public String restfulTest(@PathVariable int a, @PathVariable int b, Model model)
 
 结果：
 
-![image-20201006133727106](D:\Typora-photos\SpringMVC\image-20201006133727106.png)
+![image-20201006133727106](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/SpringMVC/image-20201006133727106.png)
 
 
 
@@ -736,7 +736,7 @@ public String restfulTest(@PathVariable int a, @PathVariable int b, Model model)
 
 结果：
 
-![image-20201006133826967](D:\Typora-photos\SpringMVC\image-20201006133826967.png)
+![image-20201006133826967](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/SpringMVC/image-20201006133826967.png)
 
 
 
@@ -1039,7 +1039,7 @@ public String test1(@RequestParam("name") String name, Model model) {
 
 结果：当使用post请求会出现中文乱码，但使用get请求不会。
 
-![image-20201006173438454](D:\Typora-photos\SpringMVC\image-20201006173438454.png)
+![image-20201006173438454](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/SpringMVC/image-20201006173438454.png)
 
 ### 9.1、解决方案一
 
@@ -1314,7 +1314,7 @@ JSON 是 JavaScript 对象的字符串表示法，它使用文本表示一个 JS
 
 3. 在IDEA中使用浏览器，查看后台输出的数据
 
-   ![image-20201006185010643](D:\Typora-photos\SpringMVC\image-20201006185010643.png)
+   ![image-20201006185010643](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/SpringMVC/image-20201006185010643.png)
 
 
 
@@ -1414,7 +1414,7 @@ JSON 是 JavaScript 对象的字符串表示法，它使用文本表示一个 JS
 
 4. 配置Tomcat，测试
 
-   ![image-20201006210113639](D:\Typora-photos\SpringMVC\image-20201006210113639.png)
+   ![image-20201006210113639](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/SpringMVC/image-20201006210113639.png)
 
 
 
@@ -1501,7 +1501,7 @@ public String test2() throws JsonProcessingException {
 
 结果：
 
-![image-20201006210722618](D:\Typora-photos\SpringMVC\image-20201006210722618.png)
+![image-20201006210722618](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/SpringMVC/image-20201006210722618.png)
 
 
 
@@ -1524,7 +1524,7 @@ public String test3() throws JsonProcessingException {
 
 结果：
 
-![image-20201006211035172](D:\Typora-photos\SpringMVC\image-20201006211035172.png)
+![image-20201006211035172](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/SpringMVC/image-20201006211035172.png)
 
 默认日期格式会变成一个数字，是1970年1月1日到当前日期的毫秒数！
 
@@ -1557,7 +1557,7 @@ public String test4() throws JsonProcessingException {
 
 结果：
 
-![image-20201006211957685](D:\Typora-photos\SpringMVC\image-20201006211957685.png)
+![image-20201006211957685](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/SpringMVC/image-20201006211957685.png)
 
 
 
@@ -2476,7 +2476,7 @@ INSERT  INTO `books`(`bookID`,`bookName`,`bookCounts`,`detail`)VALUES
 
 **项目结构：**
 
-![image-20201010141259180](D:\Typora-photos\SpringMVC\image-20201010141259180.png)
+![image-20201010141259180](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/SpringMVC/image-20201010141259180.png)
 
 
 

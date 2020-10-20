@@ -4,7 +4,7 @@
 
 ### 1.1、什么是Mybatis
 
-![image-20200919160115592](D:\Typora-photos\mybatis\image-20200919160115592.png)
+![image-20200919160115592](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/mybatis/image-20200919160115592.png)
 
 - MyBatis 是一款优秀的**持久层框架**
 - 支持自定义 SQL、存储过程以及高级映射。
@@ -139,7 +139,7 @@ VALUES
                <scope>test</scope>
            </dependency>
        </dependencies>
-    ```
+   ```
 
 
 
@@ -548,7 +548,7 @@ Mybatis默认的事务管理器就是JDBC，连接池：POOLED
 
 这些属性可以在外部进行配置，并可以进行动态替换。你既可以在典型的 Java 属性文件中配置这些属性，也可以在 properties 元素的子元素中设置。【db.properties】
 
-![image-20200919203620586](D:\Typora-photos\mybatis\image-20200919203620586.png)
+![image-20200919203620586](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/mybatis/image-20200919203620586.png)
 
 编写一个配置文件
 
@@ -621,9 +621,9 @@ public class User {
 
 这是 MyBatis 中极为重要的调整设置，它们会改变 MyBatis 的运行时行为。
 
-![image-20200919231134304](D:\Typora-photos\mybatis\image-20200919231134304.png)
+![image-20200919231134304](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/mybatis/image-20200919231134304.png)
 
-![image-20200919231206253](D:\Typora-photos\mybatis\image-20200919231206253.png)
+![image-20200919231206253](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/mybatis/image-20200919231206253.png)
 
 
 
@@ -686,7 +686,7 @@ MapperRegistry：注册绑定我们的Mapper文件；
 
 ### 8、生命周期和作用域
 
-![image-20200919235010431](D:\Typora-photos\mybatis\image-20200919235010431.png)
+![image-20200919235010431](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/mybatis/image-20200919235010431.png)
 
 生命周期类别，作用域，是至关重要的，因为错误的使用会导致非常严重的**并发问题**。
 
@@ -708,7 +708,7 @@ MapperRegistry：注册绑定我们的Mapper文件；
 - SqlSession 的实例不是线程安全的，因此是不能被共享的，所以它的最佳的作用域是请求或方法作用域。
 - 用完之后需要赶紧关闭，否则资源被占用！
 
-![image-20200919235542460](D:\Typora-photos\mybatis\image-20200919235542460.png)
+![image-20200919235542460](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/mybatis/image-20200919235542460.png)
 
 这里面的每一个Mapper，就代表一个具体的业务！
 
@@ -718,7 +718,7 @@ MapperRegistry：注册绑定我们的Mapper文件；
 
 数据库中的字段
 
-![image-20200919235915649](D:\Typora-photos\mybatis\image-20200919235915649.png)
+![image-20200919235915649](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/mybatis/image-20200919235915649.png)
 
 新建一个项目，拷贝之前的，测试实体类字段不一致的情况
 
@@ -733,7 +733,7 @@ public class User {
 
 测试出现问题
 
-![image-20200920002309507](D:\Typora-photos\mybatis\image-20200920002309507.png)
+![image-20200920002309507](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/mybatis/image-20200920002309507.png)
 
 
 
@@ -793,7 +793,7 @@ id 	name 	password
 
 
 
-![image-20200920003718706](D:\Typora-photos\mybatis\image-20200920003718706.png)
+![image-20200920003718706](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/mybatis/image-20200920003718706.png)
 
 
 
@@ -807,7 +807,7 @@ id 	name 	password
 
 现在：日志工厂！
 
-![image-20200920122137789](D:\Typora-photos\mybatis\image-20200920122137789.png)
+![image-20200920122137789](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/mybatis/image-20200920122137789.png)
 
 - SLF4J 
 -  LOG4J 【掌握】
@@ -831,7 +831,7 @@ id 	name 	password
 </settings>
 ```
 
-![image-20200920123942522](D:\Typora-photos\mybatis\image-20200920123942522.png)
+![image-20200920123942522](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/mybatis/image-20200920123942522.png)
 
 
 
@@ -896,7 +896,7 @@ id 	name 	password
 
 4. Log4j的使用，直接测试运行刚才的查询
 
-   ![image-20200920131108691](D:\Typora-photos\mybatis\image-20200920131108691.png)
+   ![image-20200920131108691](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/mybatis/image-20200920131108691.png)
 
 
 
@@ -1106,13 +1106,13 @@ SELECT * FROM USER LIMIT 3;		-- [0,n];
 
 原理：动态代理！
 
-![image-20200920204409989](D:\Typora-photos\mybatis\image-20200920204409989.png)
+![image-20200920204409989](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/mybatis/image-20200920204409989.png)
 
 
 
 **Mybatis详细的执行流程**
 
-![image-20200920204409989](D:\Typora-photos\mybatis\temp.png)
+![image-20200920204409989](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/mybatis/temp.png)
 
 
 
@@ -1240,13 +1240,13 @@ public interface UserMapper {
 
 多对一：
 
-![image-20200921173810980](D:\Typora-photos\mybatis\image-20200921173810980.png)
+![image-20200921173810980](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/mybatis/image-20200921173810980.png)
 
 - 多个学生，对应一个老师
 - 对于学生这边而言，**关联**..，多个学生，关联一个老师【多对一】
 - 对于老师而言，**集合**，一个老师，有很多学生【一对多】
 
-![image-20200921174447936](D:\Typora-photos\mybatis\image-20200921174447936.png)
+![image-20200921174447936](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/mybatis/image-20200921174447936.png)
 
 
 
@@ -1743,7 +1743,7 @@ foreach主要是实现(1,2,3)集合的部分。
 
 
 
-![image-20200922155521437](D:\Typora-photos\mybatis\image-20200922155521437.png)
+![image-20200922155521437](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/mybatis/image-20200922155521437.png)
 
 
 
@@ -1947,7 +1947,7 @@ foreach主要是实现(1,2,3)集合的部分。
 
 ### 13.5、缓存原理
 
-![image-20200922205914847](D:\Typora-photos\mybatis\image-20200922205914847.png)
+![image-20200922205914847](https://github.com/tz-feng/myStudy/blob/main/Typora-photos/mybatis/image-20200922205914847.png)
 
 
 
