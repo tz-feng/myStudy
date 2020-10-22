@@ -4618,6 +4618,44 @@ starter：
 
 
 
+> 测试
+
+1. 引入自定义starter
+
+   ```xml
+   <!--引入自定义starter-->
+   <dependency>
+      <groupId>com.yjy.starter</groupId>
+      <artifactId>yjy-spring-boot-starter</artifactId>
+      <version>1.0-SNAPSHOT</version>
+   </dependency>
+   ```
+
+2. 编写controller
+
+   ```java
+   @RestController
+   public class HelloController {
+   
+       @Autowired
+       HelloService helloService;
+   
+       @GetMapping("/hello")
+       public String hello() {
+           return helloService.sayHello("yjy");
+       }
+   }
+   ```
+
+3. 编写配置文件
+
+   ```properties
+   yjy.hello.prefix=hello
+   yjy.hello.suffix=world
+   ```
+
+4. 运行测试
+
 
 
 
