@@ -4658,6 +4658,268 @@ starter：
 
 
 
+# 九、SpringSecurity
+
+## 1、安全简介
+
+在 Web 开发中，安全一直是非常重要的一个方面。安全虽然属于应用的非功能性需求，但是应该在应用开发的初期就考虑进来。如果在应用开发的后期才考虑安全的问题，就可能陷入一个两难的境地：一方面，应用存在严重的安全漏洞，无法满足用户的要求，并可能造成用户的隐私数据被攻击者窃取；另一方面，应用的基本架构已经确定，要修复安全漏洞，可能需要对系统的架构做出比较重大的调整，因而需要更多的开发时间，影响应用的发布进程。因此，从应用开发的第一天就应该把安全相关的因素考虑进来，并在整个应用的开发过程中。
+
+市面上存在比较有名的：Shiro，Spring Security ！
+
+主要功能：认证，授权
+
+
+
+## 2、初识SpringSecurity
+
+Spring Security 是针对Spring项目的安全框架，也是Spring Boot底层安全模块默认的技术选型，他可以实现强大的Web安全控制，对于安全控制，我们仅需要引入 spring-boot-starter-security 模块，进行少量的配置，即可实现强大的安全管理！
+
+记住几个类：
+
+- WebSecurityConfigurerAdapter：自定义Security策略
+- AuthenticationManagerBuilder：自定义认证策略
+- @EnableWebSecurity：开启WebSecurity模式
+
+
+
+**导入SpringSecurity依赖**
+
+```xml
+<!--导入spring security依赖-->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+```
+
+
+
+**编写配置类**（继承WebSecurityConfigurerAdapter类，使用@EnableWebSecurity进行开启）
+
+```java
+@EnableWebSecurity //开启webSecurity模式
+public class securityConfig extends WebSecurityConfigurerAdapter {
+	//重写方法
+}
+```
+
+
+
+**定制请求授权规则**
+
+```java
+@Override
+protected void configure(HttpSecurity http) throws Exception {
+    //定制请求授权规则
+    http.authorizeRequests().antMatchers("/").permitAll()
+            .antMatchers("/level1/**").hasAnyRole("vip1","vip2","vip3")
+            .antMatchers("/level2/**").hasAnyRole("vip2","vip3")
+            .antMatchers("/level3/**").hasRole("vip3");
+}
+```
+
+
+
+**开启登录功能**
+
+```java
+// 开启自动配置的登录功能
+// "/login" 请求来到登录页
+// /login?error 重定向到这里表示登录失败
+http.formLogin();
+```
+
+
+
+**定制认证规则**
+
+```java
+protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    //正常开发中是通过数据库获取数据的，这里通过内存来获取。
+    auth.inMemoryAuthentication().passwordEncoder(new BCryptPasswordEncoder()).
+            withUser("admin").password(new BCryptPasswordEncoder().encode("123456")).roles("vip1","vip2","vip3")
+            .and().withUser("yjy").password(new BCryptPasswordEncoder().encode("123456")).roles("vip1","vip2")
+            .and().withUser("hxh").password(new BCryptPasswordEncoder().encode("123456")).roles("vip1");
+}
+```
+
+这设置密码必须使用加密，如果不使用加密会报`There is no PasswordEncoder mapped for the id "null"`错误。
+
+
+
+**测试**
+
+能够成功登录，并且每个角色只能访问自己认证的页面。
+
+
+
+## 3、权限控制和注销
+
+### 3.1、注销
+
+**前端**
+
+```html
+<!--sec:authorize="isAuthenticated()"判断是否用户是否登录，如果登录了才显示。需要导入依赖包，下面有-->
+<div sec:authorize="isAuthenticated()">
+    <a class="item" th:href="@{/logout}">
+        <i class="sign-out icon"></i> 注销
+    </a>
+</div>
+```
+
+
+
+**开启自动配置的注销功能**
+
+```java
+//开启注销功能
+//logoutUrl()接收的请求，默认是/logout，如果发送的请求是logout可以不写
+//logoutSuccessUrl("/")请求成功后跳转到哪
+http.logout().logoutUrl("/logout").logoutSuccessUrl("/");
+//由于使用get请求会存在安全性问题，因此注销时可能会报错。
+//解决方案用两种：1.将请求方式设置位post；2.关闭csrf。
+http.csrf().disable();
+```
+
+
+
+**测试**
+
+成功退出，并且能够跳转到首页
+
+
+
+### 3.2、权限控制
+
+**需求**：页面展示时，根据用户角色的权限来展示内容。
+
+
+
+**导入依赖**
+
+```xml
+<!--导入thymeleaf-extras-springsecurity4依赖包-->
+<dependency>
+   <groupId>org.thymeleaf.extras</groupId>
+   <artifactId>thymeleaf-extras-springsecurity4</artifactId>
+   <version>3.0.4.RELEASE</version>
+</dependency>
+```
+
+
+
+**导入命名空间**
+
+```html
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+```
+
+
+
+**修改前端页面**
+
+```html
+<!--菜单通过用户角色动态的实现-->
+<div class="ui three column stackable grid">
+        <div class="column" sec:authorize="hasAnyRole('vip1','vip2','vip3')">
+            <div class="ui raised segment">
+                <div class="ui">
+                    <div class="content">
+                        <h5 class="content">Level 1</h5>
+                        <hr>
+                        <div><a th:href="@{/level1/1}"><i class="bullhorn icon"></i> Level-1-1</a></div>
+                        <div><a th:href="@{/level1/2}"><i class="bullhorn icon"></i> Level-1-2</a></div>
+                        <div><a th:href="@{/level1/3}"><i class="bullhorn icon"></i> Level-1-3</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="column" sec:authorize="hasAnyRole('vip2','vip3')">
+            <div class="ui raised segment">
+                <div class="ui">
+                    <div class="content">
+                        <h5 class="content">Level 2</h5>
+                        <hr>
+                        <div><a th:href="@{/level2/1}"><i class="bullhorn icon"></i> Level-2-1</a></div>
+                        <div><a th:href="@{/level2/2}"><i class="bullhorn icon"></i> Level-2-2</a></div>
+                        <div><a th:href="@{/level2/3}"><i class="bullhorn icon"></i> Level-2-3</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="column" sec:authorize="hasAnyRole('vip3')">
+            <div class="ui raised segment">
+                <div class="ui">
+                    <div class="content">
+                        <h5 class="content">Level 3</h5>
+                        <hr>
+                        <div><a th:href="@{/level3/1}"><i class="bullhorn icon"></i> Level-3-1</a></div>
+                        <div><a th:href="@{/level3/2}"><i class="bullhorn icon"></i> Level-3-2</a></div>
+                        <div><a th:href="@{/level3/3}"><i class="bullhorn icon"></i> Level-3-3</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+```
+
+
+
+## 4、完善功能
+
+### 4.1、记住我
+
+**开启记住我功能**
+
+```java
+//开启记住我功能
+//rememberMeParameter()绑定前端的属性
+http.rememberMe().rememberMeParameter("remember");
+```
+
+
+
+**前端**
+
+```html
+<div class="field">
+    <input type="checkbox" name="remember"> 记住我
+</div>
+```
+
+
+
+**测试**
+
+登陆后关闭页面，重新打开页面，用户仍然存在。**本质上是保存到cookie，通过浏览器审查元素的application中可以看到。**
+
+
+
+### 4.2、定制登录页
+
+通过`loginPage("/toLogin")`来设置跳转请求，默认是`/login`。通过`usernameParameter("username")`和`passwordParameter("password")`绑定前端数据，默认用户名是`username`，密码是`password`。通过`loginProcessingUrl("/login")`设置跳转成功的页面。
+
+```java
+http.formLogin().loginPage("/toLogin").usernameParameter("username").passwordParameter("password").loginProcessingUrl("/login");
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
